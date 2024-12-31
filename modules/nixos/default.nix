@@ -87,6 +87,8 @@
   "pipewire"
   "git"
   "battery"
+  # Fingerprint scanner
+  "fprintd"
 ]
 # Features disabled by default
 // lib.my.mapDefault false []
