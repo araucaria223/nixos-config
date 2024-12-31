@@ -6,12 +6,22 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
   };
 
-  outputs = {self, nixpkgs, ...} @ inputs: {
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
+    lib = nixpkgs.lib.extend (final: prev: {my = import ./lib final;});
+  in {
+    packages = lib.my.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    overlays = import ./overlays {inherit inputs;};
+
     nixosConfigurations = {
       lookfar = nixpkgs.lib.nixosSystem {
-	specialArgs = { inherit inputs; };
+        specialArgs = {inherit inputs outputs lib;};
 
-	modules = [];
+        modules = [./hosts/lookfar/configuration.nix];
       };
     };
   };
