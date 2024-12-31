@@ -85,6 +85,7 @@
   "zsh"
   # Audio
   "pipewire"
+  "git"
 ]
 # Features disabled by default
 // lib.my.mapDefault false []
