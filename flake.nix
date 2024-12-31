@@ -18,12 +18,14 @@
     packages = lib.my.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     overlays = import ./overlays {inherit inputs;};
 
+    formatter = lib.my.forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+
     nixosConfigurations = {
       lookfar = nixpkgs.lib.nixosSystem {
         specialArgs = {
-	    inherit inputs outputs lib;
-	    settings = import ./hosts/lookfar/settings.nix;
-	};
+          inherit inputs outputs lib;
+          settings = import ./hosts/lookfar/settings.nix;
+        };
 
         modules = [./hosts/lookfar/configuration.nix];
       };
