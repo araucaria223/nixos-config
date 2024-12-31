@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   inputs,
   outputs,
@@ -62,3 +61,9 @@
     };
   };
 }
+# Features enabled by default
+// lib.my.mapDefault true [
+  "sops-nix"
+]
+# Features disabled by default
+// lib.my.mapDefault false []
