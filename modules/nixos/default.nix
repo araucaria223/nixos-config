@@ -17,7 +17,7 @@
   hardware.enableAllFirmware = true;
 
   # Dynamic options
-  config.security.pam.services.hyprlock.fprintAuth = lib.mkDefault true;
+  security.pam.services.hyprlock.fprintAuth = lib.mkDefault true;
 
   # Nix/Nixpkgs modifications
   nixpkgs = {
