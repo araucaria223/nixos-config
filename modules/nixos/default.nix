@@ -94,7 +94,10 @@
   "geoclue"
   # Wifi
   "wpa_supplicant"
+  # Global theming
   "stylix-theme"
+  # Wayland compositor
+  "hyprland"
 ]
 # Features disabled by default
 // lib.my.mapDefault false [
