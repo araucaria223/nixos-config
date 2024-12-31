@@ -90,6 +90,8 @@
   # Fingerprint scanner
   "fprintd"
   "btrfs-scrub"
+  # Geolocation
+  "geoclue"
 ]
 # Features disabled by default
 // lib.my.mapDefault false []
