@@ -79,6 +79,8 @@
   "sudo"
   # Shell
   "zsh"
+  # Audio
+  "pipewire"
 ]
 # Features disabled by default
 // lib.my.mapDefault false []
