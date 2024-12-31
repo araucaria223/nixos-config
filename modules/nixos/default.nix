@@ -92,6 +92,8 @@
   "btrfs-scrub"
   # Geolocation
   "geoclue"
+  # Wifi
+  "wpa_supplicant"
 ]
 # Features disabled by default
 // lib.my.mapDefault false []
