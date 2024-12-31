@@ -67,9 +67,13 @@
 }
 # Features enabled by default
 // lib.my.mapDefault true [
+  # Secrets management
   "sops-nix"
+  # Persistence management
   "impermanence"
   "homeManager"
+  # Set root password
+  "root"
 ]
 # Features disabled by default
 // lib.my.mapDefault false []
