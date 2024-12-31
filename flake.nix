@@ -6,6 +6,12 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # User environment management
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Secrets management
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -52,6 +58,7 @@
           ./hosts/lookfar/configuration.nix
 	  ./modules/nixos
 
+	  home-manager.nixosModules.default
 	  impermanence.nixosModules.impermanence
 	  sops-nix.nixosModules.sops
 	  nixos-hardware.nixosModules.framework-12th-gen-intel
