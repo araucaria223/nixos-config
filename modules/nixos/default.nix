@@ -96,4 +96,7 @@
   "wpa_supplicant"
 ]
 # Features disabled by default
-// lib.my.mapDefault false []
+// lib.my.mapDefault false [
+  # Secure boot
+  "lanzaboote"
+]
