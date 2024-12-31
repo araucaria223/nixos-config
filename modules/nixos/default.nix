@@ -16,6 +16,9 @@
   services.fwupd.enable = true;
   hardware.enableAllFirmware = true;
 
+  # Dynamic options
+  config.security.pam.services.hyprlock.fprintAuth = lib.mkDefault true;
+
   # Nix/Nixpkgs modifications
   nixpkgs = {
     overlays = with outputs.overlays; [
