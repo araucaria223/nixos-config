@@ -37,7 +37,11 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    lib = nixpkgs.lib.extend (final: prev: {my = import ./lib final;});
+    lib =
+      nixpkgs.lib.extend
+      (final: prev:
+        {my = import ./lib final;}
+        // inputs.home-manager.lib);
   in {
     packages = lib.my.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     overlays = import ./overlays {inherit inputs;};
@@ -52,16 +56,16 @@
         };
 
         modules = with inputs; [
-	  disko.nixosModules.default
-	  (import ./hosts/lookfar/disko.nix {device = "/dev/nvme0n1";})
+          disko.nixosModules.default
+          (import ./hosts/lookfar/disko.nix {device = "/dev/nvme0n1";})
 
           ./hosts/lookfar/configuration.nix
-	  ./modules/nixos
+          ./modules/nixos
 
-	  home-manager.nixosModules.default
-	  impermanence.nixosModules.impermanence
-	  sops-nix.nixosModules.sops
-	  nixos-hardware.nixosModules.framework-12th-gen-intel
+          home-manager.nixosModules.default
+          impermanence.nixosModules.impermanence
+          sops-nix.nixosModules.sops
+          nixos-hardware.nixosModules.framework-12th-gen-intel
         ];
       };
     };
