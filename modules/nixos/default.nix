@@ -74,6 +74,8 @@
   "homeManager"
   # Bootloader
   "systemd-boot"
+  # Kernel patches
+  "kernel"
   # Set root password
   "root"
   # Set up user account
