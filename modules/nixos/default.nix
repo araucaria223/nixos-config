@@ -86,6 +86,7 @@
   # Audio
   "pipewire"
   "git"
+  "battery"
 ]
 # Features disabled by default
 // lib.my.mapDefault false []
