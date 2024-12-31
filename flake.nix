@@ -11,6 +11,12 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Disk management
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -33,7 +39,15 @@
           settings = import ./hosts/lookfar/settings.nix;
         };
 
-        modules = [./hosts/lookfar/configuration.nix];
+        modules = with inputs; [
+	  disko.nixosModules.default
+	  (import ./hosts/lookfar/disko.nix {device = "/dev/nvme0n1";})
+
+          ./hosts/lookfar/configuration.nix
+	  ./modules/nixos
+
+	  sops-nix.nixosModules.sops
+        ];
       };
     };
   };
