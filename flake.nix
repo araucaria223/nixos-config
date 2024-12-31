@@ -17,6 +17,9 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Hardware optimisations
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs = {
@@ -47,6 +50,7 @@
 	  ./modules/nixos
 
 	  sops-nix.nixosModules.sops
+	  nixos-hardware.nixosModules.framework-12th-gen-intel
         ];
       };
     };
