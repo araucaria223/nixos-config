@@ -18,6 +18,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Ephemeral filesystem management
+    impermanence.url = "github:nix-community/impermanence";
+
     # Hardware optimisations
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
@@ -49,6 +52,7 @@
           ./hosts/lookfar/configuration.nix
 	  ./modules/nixos
 
+	  impermanence.nixosModules.impermanence
 	  sops-nix.nixosModules.sops
 	  nixos-hardware.nixosModules.framework-12th-gen-intel
         ];
