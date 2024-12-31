@@ -75,7 +75,7 @@
   # Bootloader
   "systemd-boot"
   # Kernel patches
-  "kernel"
+  "kernel-patches"
   # Set root password
   "root"
   # Set up user account
