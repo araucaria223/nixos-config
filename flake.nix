@@ -38,6 +38,14 @@
 
     # Theming
     stylix.url = "github:danth/stylix";
+
+    # Wayland compositor
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      # Pin plugin versions to hyprland verion
+      inputs.hyprland.follows = "hyprland";
+    };
   };
 
   outputs = {
