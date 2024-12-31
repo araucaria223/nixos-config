@@ -74,6 +74,11 @@
   "homeManager"
   # Set root password
   "root"
+  # Set up user account
+  "mainUser"
+  "sudo"
+  # Shell
+  "zsh"
 ]
 # Features disabled by default
 // lib.my.mapDefault false []
