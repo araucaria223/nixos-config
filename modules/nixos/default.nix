@@ -69,6 +69,7 @@
 // lib.my.mapDefault true [
   "sops-nix"
   "impermanence"
+  "homeManager"
 ]
 # Features disabled by default
 // lib.my.mapDefault false []
