@@ -20,7 +20,10 @@
 
     nixosConfigurations = {
       lookfar = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs lib;};
+        specialArgs = {
+	    inherit inputs outputs lib;
+	    settings = import ./hosts/lookfar/settings.nix;
+	};
 
         modules = [./hosts/lookfar/configuration.nix];
       };

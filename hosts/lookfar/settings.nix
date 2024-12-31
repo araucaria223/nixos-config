@@ -1,0 +1,4 @@
+{
+  hostname = "lookfar";
+  username = "araucaria";
+}
