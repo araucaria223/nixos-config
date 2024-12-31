@@ -94,6 +94,7 @@
   "geoclue"
   # Wifi
   "wpa_supplicant"
+  "stylix-theme"
 ]
 # Features disabled by default
 // lib.my.mapDefault false [
