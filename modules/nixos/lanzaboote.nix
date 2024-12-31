@@ -2,10 +2,15 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: let
   keyDir = "/var/lib/sbctl";
 in {
+  imports = [
+    inputs.lanzaboote.nixosModules.lanzaboote
+  ];
+
   options.lanzaboote.enable = lib.mkEnableOption ''
     Enable lanzaboote for secure boot
   '';

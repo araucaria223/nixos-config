@@ -74,7 +74,6 @@
           home-manager.nixosModules.default
           impermanence.nixosModules.impermanence
           sops-nix.nixosModules.sops
-	  lanzaboote.nixosModules.lanzaboote
           nixos-hardware.nixosModules.framework-12th-gen-intel
 	  stylix.nixosModules.stylix
         ];
