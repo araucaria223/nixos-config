@@ -27,6 +27,12 @@
     # Ephemeral filesystem management
     impermanence.url = "github:nix-community/impermanence";
 
+    # Secure boot
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Hardware optimisations
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
@@ -65,6 +71,7 @@
           home-manager.nixosModules.default
           impermanence.nixosModules.impermanence
           sops-nix.nixosModules.sops
+	  lanzaboote.nixosModules.lanzaboote
           nixos-hardware.nixosModules.framework-12th-gen-intel
         ];
       };
