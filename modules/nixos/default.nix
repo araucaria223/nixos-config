@@ -44,6 +44,10 @@
       flake-registry = "";
       # Optimise the nix store on rebuild
       auto-optimise-store = true;
+
+      # Use the nix community binary cache
+      substituters = ["https://nix-community.cachix.org"];
+      trusted-public-keys = ["nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="];
     };
 
     # Disable channels
@@ -64,6 +68,7 @@
 # Features enabled by default
 // lib.my.mapDefault true [
   "sops-nix"
+  "impermanence"
 ]
 # Features disabled by default
 // lib.my.mapDefault false []
