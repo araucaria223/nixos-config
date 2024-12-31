@@ -35,6 +35,9 @@
 
     # Hardware optimisations
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    # Theming
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = {
@@ -73,6 +76,7 @@
           sops-nix.nixosModules.sops
 	  lanzaboote.nixosModules.lanzaboote
           nixos-hardware.nixosModules.framework-12th-gen-intel
+	  stylix.nixosModules.stylix
         ];
       };
     };
