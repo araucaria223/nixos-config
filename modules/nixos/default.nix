@@ -89,6 +89,7 @@
   "battery"
   # Fingerprint scanner
   "fprintd"
+  "btrfs-scrub"
 ]
 # Features disabled by default
 // lib.my.mapDefault false []
