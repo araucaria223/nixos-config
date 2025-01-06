@@ -10,9 +10,6 @@
     ncdu
   ];
 
-  # Youtube downloader
-  programs.yt-dlp.enable = lib.mkDefault true;
-
   # Fuzzy finder
   programs.fzf = lib.mkDefault {
     enable = true;
@@ -21,6 +18,10 @@
 }
 # Features enabled by default
 // lib.my.mapDefault true [
+  # Youtube downloader
+  "programs.yt-dlp"
+  "programs.bottom"
+
   # Terminals
   "alacritty"
   "kitty"
