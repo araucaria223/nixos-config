@@ -6,6 +6,7 @@ with builtins; rec {
 
   paths = import ./paths.nix {inherit lib;};
   forAllSystems = lib.genAttrs systems;
+
   allNixFiles = y:
     (lib.filesystem.listFilesRecursive y)
     |> filter (x:
@@ -14,11 +15,11 @@ with builtins; rec {
       && lib.hasSuffix ".nix" (toString x)
       && !lib.hasSuffix ".old.nix" (toString x));
 
-  mapDefault = cardinality: features:
+  mapDefault = bool: features:
     features
     |> map (option: {
       name = option;
-      value = {enable = lib.mkDefault cardinality;};
+      value = {enable = lib.mkDefault bool;};
     })
     |> listToAttrs;
 }
