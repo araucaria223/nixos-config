@@ -15,7 +15,9 @@
 }
 # Features enabled by default
 // lib.my.mapDefault true [
+  # Terminals
   "alacritty"
+  "kitty"
 ]
 # Features disabled by default
 // lib.my.mapDefault false []
