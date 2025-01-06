@@ -14,6 +14,8 @@
   programs.yt-dlp.enable = true;
 }
 # Features enabled by default
-// lib.my.mapDefault true []
+// lib.my.mapDefault true [
+  "alacritty"
+]
 # Features disabled by default
 // lib.my.mapDefault false []
