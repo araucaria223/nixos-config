@@ -1,12 +1,13 @@
 {
+  lib,
   inputs,
   outputs,
   settings,
   ...
 }: {
-  imports = [
-    inputs.impermanence.nixosModules.home-manager.impermanence
-  ];
+  imports =
+    lib.my.validImports ./.
+    ++ [inputs.impermanence.nixosModules.home-manager.impermanence];
 
   nixpkgs = {
     overlays = with outputs.overlays; [

@@ -7,13 +7,12 @@ with builtins; rec {
   paths = import ./paths.nix {inherit lib;};
   forAllSystems = lib.genAttrs systems;
 
-  allNixFiles = y:
-    (lib.filesystem.listFilesRecursive y)
-    |> filter (x:
-      baseNameOf x
-      != "default.nix"
-      && lib.hasSuffix ".nix" (toString x)
-      && !lib.hasSuffix ".old.nix" (toString x));
+  validImports = dir:
+    (readDir dir)
+    |> lib.filterAttrs (n: v:
+      n != "default.nix" &&
+      (v == "directory" || (lib.hasSuffix ".nix" && !lib.hasSuffix ".old.nix" n)))
+    |> lib.mapAttrsToList (name: type: dir + "/${name}");
 
   mapDefault = bool: features:
     features

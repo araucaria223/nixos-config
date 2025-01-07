@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  imports = lib.my.allNixFiles ./.;
+  imports = lib.my.validImports ./.;
 
   home.packages = with pkgs; [
     # Disk usage analytics

@@ -5,7 +5,7 @@
   settings,
   ...
 }: {
-  imports = lib.my.allNixFiles ./.;
+  imports = lib.my.validImports ./.;
 
   # Static options
   networking.hostName = "${settings.hostname}";
