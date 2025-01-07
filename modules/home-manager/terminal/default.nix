@@ -15,13 +15,12 @@
     enable = true;
     enableZshIntegration = true;
   };
+
+  programs.yt-dlp.enable = lib.mkDefault true;
+  programs.bottom.enable = lib.mkDefault true;
 }
 # Features enabled by default
 // lib.my.mapDefault true [
-  # Youtube downloader
-  "programs.yt-dlp"
-  "programs.bottom"
-
   # Terminals
   "alacritty"
   "kitty"
