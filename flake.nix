@@ -46,6 +46,9 @@
       # Pin plugin versions to hyprland verion
       inputs.hyprland.follows = "hyprland";
     };
+
+    # Vencord plugin manager
+    nixcord.url = "github:kaylorben/nixcord";
   };
 
   outputs = {
