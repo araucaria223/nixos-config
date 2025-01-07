@@ -3,9 +3,7 @@
   lib,
   ...
 }: {
-  options.alacritty.enable = lib.mkEnableOption ''
-    Enable alacritty terminal
-  '';
+  options.alacritty.enable = lib.my.mkDefaultTrueEnableOption "alacritty terminal";
 
   config.programs.alacritty = lib.mkIf config.alacritty.enable {
     enable = true;

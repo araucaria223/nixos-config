@@ -19,11 +19,3 @@
   programs.yt-dlp.enable = lib.mkDefault true;
   programs.bottom.enable = lib.mkDefault true;
 }
-# Features enabled by default
-// lib.my.mapDefault true [
-  # Terminals
-  "alacritty"
-  "kitty"
-]
-# Features disabled by default
-// lib.my.mapDefault false []
