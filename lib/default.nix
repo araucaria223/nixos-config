@@ -11,7 +11,7 @@ with builtins; rec {
     (readDir dir)
     |> lib.filterAttrs (n: v:
       n != "default.nix" &&
-      (v == "directory" || (lib.hasSuffix ".nix" && !lib.hasSuffix ".old.nix" n)))
+      (v == "directory" || (lib.hasSuffix ".nix" n && !lib.hasSuffix ".old.nix" n)))
     |> lib.mapAttrsToList (name: type: dir + "/${name}");
 
   mapDefault = bool: features:
