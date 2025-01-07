@@ -5,7 +5,7 @@
   settings,
   ...
 }: {
-  options.mainUser.enable = lib.mkDefaultTrueEnableOption "main user";
+  options.mainUser.enable = lib.my.mkDefaultTrueEnableOption "main user";
 
   config = lib.mkIf config.mainUser.enable {
     sops.secrets."${settings.username}-password" = {
