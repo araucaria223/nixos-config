@@ -47,6 +47,12 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    # Spotify themes & extensions
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Vencord plugin manager
     nixcord.url = "github:kaylorben/nixcord";
   };
