@@ -9,7 +9,7 @@
     inputs.spicetify-nix.homeManagerModules.default
   ];
 
-  options.spiectify.enable = lib.my.mkDefaultTrueEnableOption ''
+  options.spicetify.enable = lib.my.mkDefaultTrueEnableOption ''
     spicetify for spotify theming
   '';
 
