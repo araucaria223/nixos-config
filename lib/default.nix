@@ -15,10 +15,5 @@ with builtins; rec {
     |> lib.mapAttrsToList (name: type: dir + "/${name}");
 
   mapDefault = bool: features:
-    features
-    |> map (option: {
-      name = option;
-      value = {enable = lib.mkDefault bool;};
-    })
-    |> listToAttrs;
+    lib.genAttrs features (_: {enable = lib.mkDefault bool;});
 }
