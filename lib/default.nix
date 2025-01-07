@@ -6,6 +6,7 @@ with builtins; rec {
 
   paths = import ./paths.nix {inherit lib;};
   forAllSystems = lib.genAttrs systems;
+  symlink = map (dir: {directory = dir; method = "symlink"; });
 
   validImports = dir:
     (readDir dir)
