@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  options.sudo.enable = lib.mkEnableOption ''
-    Enable sudo
+  options.sudo.enable = lib.my.mkDefaultTrueEnableOption ''
+    sudo
   '';
 
   config.security.sudo = lib.mkIf config.sudo.enable {

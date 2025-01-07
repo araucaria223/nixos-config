@@ -21,8 +21,8 @@
     }
   '';
 in {
-  options.wpa_supplicant.enable = lib.mkEnableOption ''
-    Enable wifi management with wpa_supplicant
+  options.wpa_supplicant.enable = lib.my.mkDefaultTrueEnableOption ''
+    wifi management with wpa_supplicant
   '';
 
   config = lib.mkIf config.wpa_supplicant.enable {

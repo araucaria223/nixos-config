@@ -6,9 +6,7 @@
   settings,
   ...
 }: {
-  options.homeManager.enable = lib.mkEnableOption ''
-    Enable home-manager
-  '';
+  options.homeManager.enable = lib.my.mkDefaultTrueEnableOption "home-manager";
 
   config.home-manager = lib.mkIf config.homeManager.enable {
     extraSpecialArgs = {inherit inputs outputs settings lib;};

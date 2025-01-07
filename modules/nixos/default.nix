@@ -8,7 +8,7 @@
   imports = lib.my.validImports ./.;
 
   # Static options
-  networking.hostName = "${settings.hostname}";
+  networking.hostName = settings.hostname;
   i18n.defaultLocale = "en_GB.UTF-8";
   services.openssh.enable = true;
 
@@ -68,42 +68,3 @@
     };
   };
 }
-# Features enabled by default
-// lib.my.mapDefault true [
-  # Secrets management
-  "sops-nix"
-  # Persistence management
-  "impermanence"
-  "homeManager"
-  # Bootloader
-  "systemd-boot"
-  # Kernel patches
-  "kernel-patches"
-  # Set root password
-  "root"
-  # Set up user account
-  "mainUser"
-  "sudo"
-  # Shell
-  "zsh"
-  # Audio
-  "pipewire"
-  "git"
-  "battery"
-  # Fingerprint scanner
-  "fprintd"
-  "btrfs-scrub"
-  # Geolocation
-  "geoclue"
-  # Wifi
-  "wpa_supplicant"
-  # Global theming
-  "stylix-theme"
-  # Wayland compositor
-  "hyprland"
-]
-# Features disabled by default
-// lib.my.mapDefault false [
-  # Secure boot
-  "lanzaboote"
-]

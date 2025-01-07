@@ -3,9 +3,7 @@
   lib,
   ...
 }: {
-  options.pipewire.enable = lib.mkEnableOption ''
-    Enable pipewire
-  '';
+  options.pipewire.enable = lib.my.mkDefaultTrueEnableOption "pipewire";
 
   config = lib.mkIf config.pipewire.enable {
     security.rtkit.enable = true;

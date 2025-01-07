@@ -5,8 +5,8 @@
   settings,
   ...
 }: {
-  options.stylix-theme.enable = lib.mkEnableOption ''
-    Enable stylix theming
+  options.stylix-theme.enable = lib.my.mkDefaultTrueEnableOption ''
+    stylix theming
   '';
 
   config.stylix = lib.mkIf config.stylix-theme.enable {

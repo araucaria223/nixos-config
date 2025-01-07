@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  options.geoclue.enable = lib.mkEnableOption ''
-    Enable geoclue2 geolocation
+  options.geoclue.enable = lib.my.mkDefaultTrueEnableOption ''
+    geoclue2 geolocation
   '';
 
   config.services = lib.mkIf config.geoclue.enable {

@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.battery.enable = lib.mkEnableOption ''
-    Enable battery optimisations and options
+  options.battery.enable = lib.my.mkDefaultTrueEnableOption ''
+    battery optimisations and options
   '';
 
   config = lib.mkIf config.battery.enable {

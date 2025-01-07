@@ -4,9 +4,7 @@
   settings,
   ...
 }: {
-  options.impermanence.enable = lib.mkEnableOption ''
-    Enable impermanence
-  '';
+  options.impermanence.enable = lib.my.mkDefaultTrueEnableOption "impermanence";
 
   config = lib.mkIf config.impermanence.enable {
     # Script to delete / recursively on reboot

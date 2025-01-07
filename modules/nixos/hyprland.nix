@@ -5,9 +5,7 @@
   inputs,
   ...
 }: {
-  options.hyprland.enable = lib.mkEnableOption ''
-    Enable hyprland
-  '';
+  options.hyprland.enable = lib.my.mkDefaultTrueEnableOption "hyprland";
 
   config = lib.mkIf config.hyprland.enable {
     environment.sessionVariables.NIXOS_OZONE_WL = "1";

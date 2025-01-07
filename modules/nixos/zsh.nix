@@ -3,9 +3,7 @@
   lib,
   ...
 }: {
-  options.zsh.enable = lib.mkEnableOption ''
-    Enable zsh
-  '';
+  options.zsh.enable = lib.my.mkDefaultTrueEnableOption "zsh";
 
   config = lib.mkIf config.zsh.enable {
     programs.zsh = {

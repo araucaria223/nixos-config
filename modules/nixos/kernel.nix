@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.kernel-patches.enable = lib.mkEnableOption ''
-    Enable custom kernel patches
+  options.kernel-patches.enable = lib.my.mkDefaultTrueEnableOption ''
+    custom kernel patches
   '';
 
   config = lib.mkIf config.kernel-patches.enable {

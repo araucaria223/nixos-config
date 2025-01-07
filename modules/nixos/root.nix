@@ -3,9 +3,7 @@
   lib,
   ...
 }: {
-  options.root.enable = lib.mkEnableOption ''
-    Enable root password
-  '';
+  options.root.enable = lib.my.mkDefaultTrueEnableOption "root password";
 
   config = lib.mkIf config.root.enable {
     sops.secrets."root-password" = {

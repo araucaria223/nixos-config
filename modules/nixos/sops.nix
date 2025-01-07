@@ -5,9 +5,7 @@
   settings,
   ...
 }: {
-  options.sops-nix.enable = lib.mkEnableOption ''
-    Enable sops-nix
-  '';
+  options.sops-nix.enable = lib.my.mkDefaultTrueEnableOption "sops-nix";
 
   config = lib.mkIf config.sops-nix.enable {
     sops = {

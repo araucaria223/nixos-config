@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  options.fprintd.enable = lib.mkEnableOption ''
-    Enable fingerprint scanner for login
+  options.fprintd.enable = lib.my.mkDefaultTrueEnableOption ''
+    fingerprint scanner for login
   '';
 
   config = lib.mkIf config.fprintd.enable {

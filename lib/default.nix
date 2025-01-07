@@ -16,4 +16,6 @@ with builtins; rec {
 
   mapDefault = bool: features:
     lib.genAttrs features (_: {enable = lib.mkDefault bool;});
+
+  mkDefaultTrueEnableOption = name: lib.mkEnableOption name // {default = true; example = false;};
 }

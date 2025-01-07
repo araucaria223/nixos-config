@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  options.btrfs-scrub.enable = lib.mkEnableOption ''
-    Enable btrfs autoscrubbing
+  options.btrfs-scrub.enable = lib.my.mkDefaultTrueEnableOption ''
+    btrfs autoscrubbing
   '';
 
   config.services.btrfs.autoScrub = lib.mkIf config.btrfs-scrub.enable {
