@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    inputs.nixord.homeManagerModules.nixcord
+    inputs.nixcord.homeManagerModules.nixcord
   ];
 
   options.nixcord.enable = lib.my.mkDefaultTrueEnableOption ''
