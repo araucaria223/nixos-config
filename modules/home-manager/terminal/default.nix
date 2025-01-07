@@ -16,6 +16,15 @@
     enableZshIntegration = true;
   };
 
+  # Youtube downloader
   programs.yt-dlp.enable = lib.mkDefault true;
+  # System info
   programs.bottom.enable = lib.mkDefault true;
+  # Direnv
+
+  programs.direnv = lib.mkDefault {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
 }
