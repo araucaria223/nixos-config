@@ -47,6 +47,12 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    # VSCode extensions
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     # Spotify themes & extensions
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
