@@ -18,7 +18,7 @@
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;
-      extensions = with inputs.nix-vscode-extensions.${pkgs.system}.vscode-marketplace; [
+      extensions = with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
         vscodevim.vim
         yzhang.markdown-all-in-one
         mvllow.rose-pine
