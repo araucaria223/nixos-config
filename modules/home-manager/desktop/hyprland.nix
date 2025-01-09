@@ -202,7 +202,7 @@ in {
           */
           "$mod SHIFT, F, fullscreenstate, -1 1"
           # Maximise active window
-          "$mod M, fullscreen, 1"
+          "$mod, M, fullscreen, 1"
 
           # Change the split orientation
           "$mod, D, togglesplit"
