@@ -4,11 +4,21 @@
   settings,
   ...
 }: {
-  options.impermanence.enable = lib.my.mkDefaultTrueEnableOption "impermanence";
+  options.impermanence = {
+    enable = lib.my.mkDefaultTrueEnableOption "impermanence";
+    btrfs = lib.mkOption {
+      default = false;
+      example = true;
+      description = ''
+        Whether the system is using btrfs for impermanence
+      '';
+      type = lib.types.bool;
+    };
+  };
 
   config = lib.mkIf config.impermanence.enable {
     # Script to delete / recursively on reboot
-    boot.initrd.postDeviceCommands = lib.mkAfter ''
+    boot.initrd.postDeviceCommands = lib.mkIf config.impermanence.btrfs lib.mkAfter ''
       mkdir /btrfs_tmp
       mount /dev/root_vg/root /btrfs_tmp
       if [[ -e /btrfs_tmp/root ]]; then
