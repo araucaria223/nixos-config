@@ -15,7 +15,7 @@
 
   # Template for a wpa_supplicant configuration entry
   createWPAConfig = network: ''
-    network = {
+    network={
       ssid="${config.sops.placeholder."${network}/ssid"}"
       psk=${config.sops.placeholder."${network}/pskRaw"}
     }
