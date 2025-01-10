@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   stylix.fonts = {
     monospace = {
-      package = pkgs.nerd-fonts.jetbrains-mono;
+      package = pkgs.unstable.nerd-fonts.jetbrains-mono;
       name = "JetBrainsMono Nerd Font Mono";
     };
     sansSerif = {
