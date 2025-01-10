@@ -13,7 +13,7 @@ in {
   ];
 
   options.neovim = {
-    enable = lib.mkEnableOption ''
+    enable = lib.my.mkDefaultTrueEnableOption ''
            Enable neovim -
       a powerful text editor
     '';

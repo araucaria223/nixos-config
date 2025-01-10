@@ -47,6 +47,12 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    # HM module to configure neovim
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # VSCode extensions
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
