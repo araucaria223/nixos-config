@@ -13,7 +13,11 @@
     boot = {
       plymouth.enable = true;
       consoleLogLevel = 0;
-      initrd.verbose = false;
+      initrd = {
+	verbose = false;
+	systemd.enable = true;
+      };
+
       kernelParams = [
 	"quiet"
 	"splash"
