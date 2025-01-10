@@ -24,15 +24,10 @@ in {
   config = lib.mkIf config.hyprland.enable {
     xdg = {
       # Enable the hyprland desktop portal
-      # portal = with inputs.hyprland.packages.${pkgs.system}; {
-      #   enable = true;
-      #   extraPortals = [xdg-desktop-portal-hyprland];
-      #   configPackages = [xdg-desktop-portal-hyprland];
-      # };
-      portal = with pkgs; {
-	enable = true;
-	extraPortals = [xdg-desktop-portal-hyprland];
-	configPackages = [xdg-desktop-portal-hyprland];
+      portal = with pkgs.unstable; {
+        enable = true;
+        extraPortals = [xdg-desktop-portal-hyprland];
+        configPackages = [xdg-desktop-portal-hyprland];
       };
 
       mimeApps.enable = true;
@@ -42,12 +37,7 @@ in {
       enable = true;
       systemd.enable = true;
       # Use the package from the hyprland flake
-      #package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-
-      # plugins = with inputs.hyprland-plugins.packages.${pkgs.system}; [
-      #   # Workspace overview
-      #   hyprexpo
-      # ];
+      package = pkgs.unstable.hyprland;
 
       settings = {
         monitor = [",preffered,auto,1"];
@@ -211,8 +201,6 @@ in {
 
           # Change the split orientation
           "$mod, D, togglesplit"
-          # Toggle workspace overview
-	    #"$mod SHIFT, Space, hyprexpo:expo, toggle"
 
 	  # Change focused window
 	  "$mod, H, movefocus, r"
@@ -263,18 +251,6 @@ in {
 	  # $mod + right click to resize windows
 	  "$mod, mouse:273, resizewindow"
 	];
-
-	plugin.hyprexpo = {
-	  columns = 3;
-	  gap_size = 20;
-	  workspace_method = "first 1";
-
-	  # Three finger downward swipe
-	  enable_gesture = true;
-	  gesture_fingers = 3;
-	  gesture_distance = 200;
-	  gesture_positive = true;
-	};
       };
     };
   };

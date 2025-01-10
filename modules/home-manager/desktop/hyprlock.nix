@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options.hyprlock.enable = lib.my.mkDefaultTrueEnableOption "hyprlock";
@@ -11,6 +12,7 @@
 
     programs.hyprlock = {
       enable = true;
+      package = pkgs.hyprlock;
       settings = {
         general = {
           disable_loading_bar = true;

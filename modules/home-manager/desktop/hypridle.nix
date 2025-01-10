@@ -20,6 +20,7 @@ in {
 
   config.services.hypridle = lib.mkIf config.hypridle.enable {
     enable = true;
+    package = pkgs.unstable.hypridle;
     settings = {
       lock_cmd = "pidof hyprlock || ${lib.getExe pkgs.hyprlock}";
       before_sleep_cmd = "loginctl lock-session";
