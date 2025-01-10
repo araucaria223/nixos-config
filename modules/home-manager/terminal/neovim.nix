@@ -29,11 +29,6 @@ in {
       enable = true;
       defaultEditor = true;
 
-      #colorschemes.base16 = {
-      #  enable = true;
-      #	colorscheme = "${config.colorscheme.slug}";
-      #};
-
       colorschemes.${settings.colorScheme}.enable = true;
 
       clipboard = {
@@ -60,19 +55,6 @@ in {
       };
 
       autoCmd = [
-        {
-          group = "write_quit";
-          event = ["BufWritePost" "VimLeave"];
-          pattern = "*";
-          callback = {
-            __raw = ''
-                   function()
-              vim.cmd [[cabbrev wq execute "Format sync" <bar> wq]]
-                   end
-            '';
-          };
-        }
-
 	{
 	  event = ["InsertEnter"];
 	  pattern = "*.yaml";
@@ -138,6 +120,9 @@ in {
         startify.enable = true;
         vim-surround.enable = true;
 
+	# LaTeX
+	vimtex.enable = true;
+
         # lsp for embedded code
         otter = {
           enable = true;
@@ -161,16 +146,6 @@ in {
             ];
           };
         };
-
-        # colour picker and highlighting
-        #  ccc = {
-        #    enable = true;
-        #    settings = {
-        #      default_color = "#${config.colorScheme.palette.base00}";
-        #      highlight_mode = "fg";
-        #      highlighter.auto_enable = true;
-        #    };
-        #  };
 
         cloak = {
           enable = true;
@@ -214,10 +189,6 @@ in {
           enable = true;
 
           servers = {
-            # deprecated
-            #tsserver.enable = true;
-            #ts_ls.enable = true;
-
             lua_ls = {
               enable = true;
               settings.telemetry.enable = false;
