@@ -53,6 +53,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Another neovim configuration framework
+    nvf.url = "github:notashelf/nvf";
+
     # VSCode extensions
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
