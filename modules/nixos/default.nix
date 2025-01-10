@@ -18,6 +18,8 @@
 
   # Dynamic options
   security.pam.services.hyprlock.fprintAuth = lib.mkDefault true;
+  # Global styling
+  stylix.enable = lib.mkDefault true;
 
   # Nix/Nixpkgs modifications
   nixpkgs = {
