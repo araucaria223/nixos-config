@@ -21,8 +21,8 @@
     in {
       enable = true;
       # Use the package provided by the flake
-      package = hyprPackages.hyprland;
-      portalPackage = hyprPackages.xdg-desktop-portal-hyprland;
+      #package = hyprPackages.hyprland;
+      #portalPackage = hyprPackages.xdg-desktop-portal-hyprland;
     };
   };
 }

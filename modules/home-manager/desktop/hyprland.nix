@@ -24,10 +24,15 @@ in {
   config = lib.mkIf config.hyprland.enable {
     xdg = {
       # Enable the hyprland desktop portal
-      portal = with inputs.hyprland.packages.${pkgs.system}; {
-        enable = true;
-        extraPortals = [xdg-desktop-portal-hyprland];
-        configPackages = [xdg-desktop-portal-hyprland];
+      # portal = with inputs.hyprland.packages.${pkgs.system}; {
+      #   enable = true;
+      #   extraPortals = [xdg-desktop-portal-hyprland];
+      #   configPackages = [xdg-desktop-portal-hyprland];
+      # };
+      portal = with pkgs; {
+	enable = true;
+	extraPortals = [xdg-desktop-portal-hyprland];
+	configPackages = [xdg-desktop-portal-hyprland];
       };
 
       mimeApps.enable = true;
@@ -37,12 +42,12 @@ in {
       enable = true;
       systemd.enable = true;
       # Use the package from the hyprland flake
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+      #package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
-      plugins = with inputs.hyprland-plugins.packages.${pkgs.system}; [
-        # Workspace overview
-        hyprexpo
-      ];
+      # plugins = with inputs.hyprland-plugins.packages.${pkgs.system}; [
+      #   # Workspace overview
+      #   hyprexpo
+      # ];
 
       settings = {
         monitor = [",preffered,auto,1"];
@@ -207,7 +212,7 @@ in {
           # Change the split orientation
           "$mod, D, togglesplit"
           # Toggle workspace overview
-          "$mod SHIFT, Space, hyprexpo:expo, toggle"
+	    #"$mod SHIFT, Space, hyprexpo:expo, toggle"
 
 	  # Change focused window
 	  "$mod, H, movefocus, r"
