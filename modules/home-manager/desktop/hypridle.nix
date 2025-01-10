@@ -18,12 +18,13 @@
 in {
   options.hypridle.enable = lib.my.mkDefaultTrueEnableOption "hypridle";
 
-  config.services.hypridle = lib.mkIf config.hypridle.enable {
+  config.services.hypridle = let
+    lock-cmd = "pidof hyprlock || ${lib.getExe pkgs.hyprlock}";
+  in lib.mkIf config.hypridle.enable {
     enable = true;
-    package = pkgs.unstable.hypridle;
     settings = {
-      lock_cmd = "pidof hyprlock || ${lib.getExe pkgs.hyprlock}";
-      before_sleep_cmd = "loginctl lock-session";
+      lock_cmd = lock-cmd;
+      before_sleep_cmd = lock-cmd;
       after_sleep_cmd = "hyprctl dispatch dpms on";
 
       listener = [
@@ -36,7 +37,7 @@ in {
         {
           # 5 min - Lock session
           timeout = 300;
-          on-timeout = "loginctl lock-session";
+          on-timeout = lock-cmd;
         }
         {
           # 5.5 min - Turn screen off
