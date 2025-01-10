@@ -7,5 +7,8 @@
   sddm.enable = false;
   greetd.enable = true;
 
+  systemd-boot.enable = false;
+  lanzaboote.enable = true;
+
   system.stateVersion = "24.11";
 }
