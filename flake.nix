@@ -84,7 +84,7 @@
         {my = import ./lib final;}
         // inputs.home-manager.lib);
   in {
-    packages = lib.my.forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    packages = lib.my.forAllSystems (system: import ./pkgs {inherit inputs; pkgs = nixpkgs.legacyPackages.${system};});
     overlays = import ./overlays {inherit inputs;};
 
     formatter = lib.my.forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
