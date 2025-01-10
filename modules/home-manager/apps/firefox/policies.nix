@@ -46,6 +46,8 @@
       };
     in {
       "browser.contentblocking.category" = lock "strict";
+      "browser.sessionstore.resume_from_crash" = lock true;
+      "browser.aboutConfig.showWarning" = lock false;
 
       # Stupid and annoying
       "extensions.pocket.enabled" = lock false;
