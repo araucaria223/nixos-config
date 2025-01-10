@@ -24,7 +24,7 @@ in {
   config = lib.mkIf config.hyprland.enable {
     xdg = {
       # Enable the hyprland desktop portal
-      portal = with pkgs.unstable; {
+      portal = with pkgs; {
         enable = true;
         extraPortals = [xdg-desktop-portal-hyprland];
         configPackages = [xdg-desktop-portal-hyprland];
@@ -36,8 +36,6 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
       systemd.enable = true;
-      # Use the package from the hyprland flake
-      package = pkgs.unstable.hyprland;
 
       settings = {
         monitor = [",preffered,auto,1"];
