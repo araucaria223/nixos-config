@@ -13,7 +13,7 @@
       safe.directory = ["/home/${settings.username}/nixos"];
 
       user = {
-        email = "${settings.username}@${settings.hostname}.com";
+        email = "${settings.username}@${settings.hostname}";
         name = "${settings.username}";
       };
 
