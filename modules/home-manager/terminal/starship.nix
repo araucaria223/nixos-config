@@ -9,7 +9,7 @@
   inherit (lib.strings) concatStrings;
 in {
   options.starship = {
-    enable = lib.mkEnableOption ''
+    enable = lib.my.mkDefaultTrueEnableOption ''
            Enable starship -
       a minimal and customisable shell prompt
     '';
