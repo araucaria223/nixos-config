@@ -16,8 +16,8 @@
     users.users.${settings.username} = {
       isNormalUser = true;
       extraGroups = ["wheel"];
-      # hashedPasswordFile = config.sops.secrets."${settings.username}-password".path;
-      initialPassword = "password";
+      hashedPasswordFile = config.sops.secrets."${settings.username}-password".path;
+      # initialPassword = "password";
       shell = lib.mkIf config.programs.zsh.enable pkgs.zsh;
     };
   };
