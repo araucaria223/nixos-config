@@ -4,7 +4,7 @@
   settings,
   ...
 }: {
-  options.greetd.enable = lib.my.mkDefaultTrueEnableOption "greetd";
+  options.greetd.enable = lib.mkEnableOption "greetd";
 
   config.services.greetd = lib.mkIf config.greetd.enable {
     enable = true;
