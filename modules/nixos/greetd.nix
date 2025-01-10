@@ -6,7 +6,7 @@
 }: {
   options.greetd.enable = lib.my.mkDefaultTrueEnableOption "greetd";
 
-  config.services.greetd = lib.mIf config.greetd.enable {
+  config.services.greetd = lib.mkIf config.greetd.enable {
     enable = true;
     settings = rec {
       initial_session = {

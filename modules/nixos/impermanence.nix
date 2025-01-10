@@ -55,10 +55,6 @@
         "/var/lib/nixos"
         "/etc/ssh"
         "/var/lib/systemd/coredump"
-        {
-          directory = "/var/lib/fprint";
-          mode = "700";
-        }
       ];
     };
 
