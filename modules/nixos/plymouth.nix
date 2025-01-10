@@ -32,11 +32,5 @@
 
       loader.timeout = 0;
     };
-
-    services.getty = {
-      autologinUser = settings.username;
-      autologinOnce = true;
-      loginProgram = "${config.programs.hyprland.package}/bin/Hyprland";
-    };
   };
 }
