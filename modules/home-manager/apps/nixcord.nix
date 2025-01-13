@@ -15,7 +15,16 @@
 
   config.programs.nixcord = lib.mkIf config.nixcord.enable {
     enable = true;
-    vesktop.enable = true;
+    vesktop = {
+      enable = true;
+      state.firstLaunch = false;
+      settings = {
+	discordBranch = "stable";
+	minimizeToTray = false;
+	arRPC = true;
+      };
+    };
+
     discord.vencord.package = pkgs.vencord;
     config = {
       useQuickCss = true;
