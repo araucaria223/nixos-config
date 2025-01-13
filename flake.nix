@@ -53,8 +53,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Another neovim configuration framework
-    nvf.url = "github:notashelf/nvf";
+    # Doom emacs for nix
+    unstraightened = {
+      url = "github:marienz/nix-doom-emacs-unstraightened";
+      inputs.nixpkgs.follows = "";
+    };
 
     # VSCode extensions
     nix-vscode-extensions = {
