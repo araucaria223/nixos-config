@@ -22,6 +22,7 @@
           "media"
           "documents"
           "downloads"
+	  "code"
         ];
       allowOther = true;
     };
