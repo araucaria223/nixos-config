@@ -5,7 +5,7 @@
 }: {
   programs.firefox.profiles."${config.home.username}".search = {
     force = true;
-    default = "Duckduckgo";
+    default = "DuckDuckGo";
 
     engines = let
       prms = [
@@ -72,6 +72,22 @@
         iconUpdateURL = "${instance}/favicon.ico";
         updateInterval = daily;
         definedAliases = ["${prefix}sx"];
+      };
+
+      "NixOS Wiki" = {
+	urls = [
+	  {
+	    template = "https://wiki.nixos.org/w/index.php";
+	    params = [
+	      {
+		name = "search";
+		value = "{searchTerms}";
+	      }
+	    ];
+	  }
+	];
+	icon = snowflake;
+	definedAliases = ["${prefix}nw"];
       };
 
       "Nix Packages" = {
