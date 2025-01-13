@@ -29,7 +29,7 @@ in {
       history.path = "${config.xdg.dataHome}/zsh/history";
 
       shellAliases = let
-        eza = lib.getExe pkgs.eza;
+        eza = "${lib.getExe pkgs.eza} --follow-symlinks";
         bat = lib.getExe pkgs.bat;
         fastfetch = lib.getExe pkgs.fastfetch;
 	flake = "$(readlink -f ${config.home.homeDirectory}/nixos)";
