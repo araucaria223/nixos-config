@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }: let
   screenshot = pkgs.writeShellApplication {
@@ -143,8 +142,8 @@ in {
         ];
 
         workspace = let
-          cal = "${pkgs.qalculate-gtk}/bin/qalculate-gtk";
-          btm = "${pkgs.kitty}/bin/kitty -e ${pkgs.bottom}/bin/btm -b";
+          cal = lib.getExe pkgs.qalculate-gtk;
+          btm = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.bottom}";
         in [
           # Launch bottom system monitor
           # If system scratchpad opened empty
@@ -153,34 +152,30 @@ in {
           "special:calculator, on-created-empty:${cal}"
         ];
 
-        exec-once = [];
+        exec-once = [
+	  "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.bottom}"
+	];
 
         # Repeat if held
         binde = let
-          pmx = "${pkgs.pamixer}/bin/pamixer";
-          bct = "${pkgs.brightnessctl}/bin/brightnessctl";
+	  pamixer = lib.getExe pkgs.pamixer;
+          bctl = lib.getExe pkgs.brightnessctl;
         in [
-          ",XF86AudioRaiseVolume, exec, ${pmx} -i 5"
-          ",XF86AudioLowerVolume, exec, ${pmx} -d 5"
-          ",XF86AudioMute, exec, ${pmx} --toggle-mute"
+          ",XF86AudioRaiseVolume, exec, ${pamixer} -i 5"
+          ",XF86AudioLowerVolume, exec, ${pamixer} -d 5"
+          ",XF86AudioMute, exec, ${pamixer} --toggle-mute"
 
-          ",XF86MonBrightnessUp, exec, ${bct} s +5%"
-          ",XF86MonBrightnessDown, exec, ${bct} s 5%-"
-          "CTRL,XF86MonBrightnessUp, exec, ${bct} s +1%"
-          "CTRL,XF86MonBrightnessDown, exec, ${bct} s 1%-"
+          ",XF86MonBrightnessUp, exec, ${bctl} s +5%"
+          ",XF86MonBrightnessDown, exec, ${bctl} s 5%-"
+          "CTRL,XF86MonBrightnessUp, exec, ${bctl} s +1%"
+          "CTRL,XF86MonBrightnessDown, exec, ${bctl} s 1%-"
         ];
 
 	"$mod" = "SUPER";
 
         # Regular keybinds
         bind = let
-          kitty = "${pkgs.kitty}/bin/kitty";
-          fuzzel = "${pkgs.fuzzel}/bin/fuzzel";
-          bemoji = "${pkgs.bemoji}/bin/bemoji";
-          screen = "${screenshot}/bin/screenshot";
-          colpick = "${color-picker}/bin/color-picker";
-          hyprlock = "${pkgs.hyprlock}/bin/hyprlock";
-          pct = "${pkgs.playerctl}/bin/playerctl";
+          pctl = lib.getExe pkgs.playerctl;
         in [
           # Kill active window
           "$mod, Q, killactive"
@@ -207,22 +202,22 @@ in {
 	  "$mod, L, movefocus, l"
 
           # Media keys
-          ",XF86AudioPlay, exec, ${pct} play-pause"
-          ",XF86AudioNext, exec, ${pct} next"
-          ",XF86AudioPrev, exec, ${pct} previous"
+          ",XF86AudioPlay, exec, ${pctl} play-pause"
+          ",XF86AudioNext, exec, ${pctl} next"
+          ",XF86AudioPrev, exec, ${pctl} previous"
 
 	  # Terminal
-	  "$mod, Return, exec, ${kitty}"
+	  "$mod, Return, exec, ${lib.getExe pkgs.kitty}"
 	  # Application launcher
-	  "$mod, Space, exec, pgrep fuzzel || ${fuzzel}"
+	  "$mod, Space, exec, pgrep fuzzel || ${lib.getExe pkgs.fuzzel}"
 	  # Emoji search
-	  "$mod SHIFT, E, exec, pgrep fuzzel || ${bemoji}"
+	  "$mod SHIFT, E, exec, pgrep fuzzel || ${lib.getExe pkgs.bemoji}"
 	  # Color picker
-	  "$mod SHIFT, C, exec, ${colpick}"
+	  "$mod SHIFT, C, exec, ${lib.getExe color-picker}"
 	  # Screenshot
-	  "$mod SHIFT, S, exec, ${screen}"
+	  "$mod SHIFT, S, exec, ${lib.getExe screenshot}"
 	  # Lock screen
-	  "$mod SHIFT, L, exec, pgrep hyprlock || ${hyprlock}"
+	  "$mod SHIFT, L, exec, pgrep hyprlock || ${lib.getExe pkgs.hyprlock}"
 	  # Reload wifi
 	  "$mod, R, exec, wpa_cli reconnect"
 
@@ -234,7 +229,7 @@ in {
 	  "$mod, mouse_down, workspace, e+1"
 	  "$mod, mouse_up, workspace, e-1"
         ]
-	# Numbered binds for workspaces 1-9
+	# Numbered binds for workspaces 1-10
 	++ lib.concatMap (x: let
 	  key = toString (lib.mod x 10);
 	  wksp = toString x;
