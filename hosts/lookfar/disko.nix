@@ -26,15 +26,17 @@
               content = {
                 type = "btrfs";
                 extraArgs = ["-f"];
-                subvolumes = {
+                subvolumes = let
+                  opts = ["compress=zstd" "discard=async" "noatime"];
+                in {
                   "/persist" = {
                     mountpoint = "/persist";
-                    mountOptions = ["subvol=persist" "compress=zstd" "discard=async" "noatime"];
+                    mountOptions = ["subvol=persist"] ++ opts;
                   };
 
                   "/nix" = {
                     mountpoint = "/nix";
-                    mountOptions = ["subvol=nix" "compress=zstd" "discard=async" "noatime"];
+                    mountOptions = ["subvol=nix"] ++ opts;
                   };
 
                   "/swap" = {
@@ -52,9 +54,9 @@
     nodev."/" = {
       fsType = "tmpfs";
       mountOptions = [
-	"size=4G"
-	"defaults"
-	"mode=755"
+        "size=12G"
+        "defaults"
+        "mode=755"
       ];
     };
   };
