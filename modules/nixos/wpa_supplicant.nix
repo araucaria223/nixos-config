@@ -16,8 +16,8 @@
   # Template for a wpa_supplicant configuration entry
   createWPAConfig = network: ''
     network={
-      ssid="${config.sops.placeholder."${network}/ssid"}"
-      psk=${config.sops.placeholder."${network}/pskRaw"}
+      ssid="${config.sops.placeholder."wireless/${network}/ssid"}"
+      psk=${config.sops.placeholder."wireless/${network}/pskRaw"}
     }
   '';
 in {
@@ -41,16 +41,16 @@ in {
 	f = n: v: v // {sopsFile = lib.my.paths.secrets + /wireless.yaml;};
       in lib.mkMerge [
 	(forAllNetworks (network: (lib.mapAttrs f {
-	  "${network}/ssid" = {};
-	  "${network}/pskRaw" = {};
+	  "wireless/${network}/ssid" = {};
+	  "wireless/${network}/pskRaw" = {};
 	})))
 
 	# Including eduroam
 	(lib.mapAttrs f {
-          "eduroam/identity" = {};
-          "eduroam/password" = {};
-          "eduroam/altsubject" = {};
-          "eduroam/ca_cert" = {};
+          "wireless/eduroam/identity" = {};
+          "wireless/eduroam/password" = {};
+          "wireless/eduroam/altsubject" = {};
+          "wireless/eduroam/ca_cert" = {};
 	})
       ];
 
@@ -68,11 +68,11 @@ in {
             pairwise=CCMP
             group=CCMP TKIP
             eap=PEAP
-            ca_cert="${config.sops.secrets."eduroam/ca_cert".path}"
-            identity="${config.sops.placeholder."eduroam/identity"}"
-            altsubject_match="${config.sops.placeholder."eduroam/altsubject"}"
+            ca_cert="${config.sops.secrets."wireless/eduroam/ca_cert".path}"
+            identity="${config.sops.placeholder."wireless/eduroam/identity"}"
+            altsubject_match="${config.sops.placeholder."wireless/eduroam/altsubject"}"
             phase2="auth=MSCHAPV2"
-            password="${config.sops.placeholder."eduroam/password"}"
+            password="${config.sops.placeholder."wireless/eduroam/password"}"
           }
 	'';
     };
