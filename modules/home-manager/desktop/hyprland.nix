@@ -153,7 +153,7 @@ in {
         ];
 
         exec-once = [
-	  "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.bottom}"
+	  "[workspace special:system silent] ${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.bottom}"
 	];
 
         # Repeat if held
