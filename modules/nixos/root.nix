@@ -6,10 +6,10 @@
   options.root.enable = lib.my.mkDefaultTrueEnableOption "root password";
 
   config = lib.mkIf config.root.enable {
-    sops.secrets."root-password" = {
+    sops.secrets."login/root-password" = {
       neededForUsers = true;
       sopsFile = lib.my.paths.secrets + /login.yaml;
     };
-    users.users.root.hashedPasswordFile = config.sops.secrets."root-password".path;
+    users.users.root.hashedPasswordFile = config.sops.secrets."login/root-password".path;
   };
 }
