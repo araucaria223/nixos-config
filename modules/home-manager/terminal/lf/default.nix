@@ -58,26 +58,35 @@
       };
 
       extraConfig = let
-        previewer = pkgs.writeShellScriptBin "pv.sh" ''
-             file=$1
-             w=$2
-             h=$3
-             x=$4
-             y=$5
+        previewer = pkgs.writeShellApplication {
+          name = "previewer";
+          runtimeInputs = with pkgs; [file kitty pistol];
+          text = ''
+            file=$1
+            w=$2
+            h=$3
+            x=$4
+            y=$5
 
-             if [[ "$( ${lib.getExe pkgs.file} -Lb --mime-type "$file")" =~ ^image ]]; then
-          ${pkgs.kitty}/bin/kitty +kitten icat --silent --stdin no --transfer-mode file --place "''${w}x''${h}@''${x}x''${y}" "$file" < /dev/null > /dev/tty
-          exit 1
-             fi
+            if [[ "$( file -Lb --mime-type "$file")" =~ ^image ]]; then
+              kitty +kitten icat --silent --stdin no --transfer-mode file --place "''${w}x''${h}@''${x}x''${y}" "$file" < /dev/null > /dev/tty
+              exit 1
+            fi
 
-             ${lib.getExe pkgs.pistol} "$file"
-        '';
-        cleaner = pkgs.writeShellScriptBin "clean.sh" ''
-          ${lib.getExe pkgs.kitty} +kitten icat --clear --stdin no --silent --transfer-mode file < /dev/null > /dev/tty
-        '';
+            pistol "$file"
+          '';
+        };
+
+        cleaner = pkgs.writeShellApplication {
+          name = "clean";
+          runtimeInputs = [pkgs.kitty];
+          text = ''
+            kitty +kitten icat --clear --stdin no --silent --transfer-mode file < /dev/null > /dev/tty
+          '';
+        };
       in ''
-        set cleaner ${cleaner}/bin/clean.sh
-        set previewer ${previewer}/bin/pv.sh
+        set cleaner ${lib.getExe cleaner}
+        set previewer ${lib.getExe previewer}
       '';
     };
   };
