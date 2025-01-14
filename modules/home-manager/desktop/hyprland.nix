@@ -154,6 +154,7 @@ in {
 
         exec-once = [
 	  "[workspace special:system silent] ${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.bottom}"
+	  (lib.getExe pkgs.waybar)
 	];
 
         # Repeat if held
