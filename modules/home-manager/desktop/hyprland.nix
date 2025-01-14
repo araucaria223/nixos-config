@@ -13,7 +13,11 @@
   color-picker = pkgs.writeShellApplication {
     name = "color-picker";
     runtimeInputs = [pkgs.hyprpicker];
-    text = /*sh*/ "hyprpicker --autocopy";
+    text =
+      /*
+      sh
+      */
+      "hyprpicker --autocopy";
   };
 in {
   options.hyprland.enable = lib.my.mkDefaultTrueEnableOption ''
@@ -35,6 +39,11 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
       systemd.enable = true;
+
+      plugins = with pkgs.hyprlandPlugins; [
+        # Workspace overview
+        hyprexpo
+      ];
 
       settings = {
         monitor = [",preffered,auto,1"];
@@ -153,13 +162,13 @@ in {
         ];
 
         exec-once = [
-	  "[workspace special:system silent] ${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.bottom}"
-	  (lib.getExe pkgs.waybar)
-	];
+          "[workspace special:system silent] ${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.bottom}"
+          (lib.getExe pkgs.waybar)
+        ];
 
         # Repeat if held
         binde = let
-	  pamixer = lib.getExe pkgs.pamixer;
+          pamixer = lib.getExe pkgs.pamixer;
           bctl = lib.getExe pkgs.brightnessctl;
         in [
           ",XF86AudioRaiseVolume, exec, ${pamixer} -i 5"
@@ -172,79 +181,90 @@ in {
           "CTRL,XF86MonBrightnessDown, exec, ${bctl} s 1%-"
         ];
 
-	"$mod" = "SUPER";
+        "$mod" = "SUPER";
 
         # Regular keybinds
         bind = let
           pctl = lib.getExe pkgs.playerctl;
-        in [
-          # Kill active window
-          "$mod, Q, killactive"
-          # Float active window
-          "$mod, V, togglefloating"
-          # Fullscreen active window
-          "$mod, F, fullscreen, 0"
-          /*
-             Client fullscreen active window -
-          useful for fullscreening videos
-          without fullscreening the whole window
-          */
-          "$mod SHIFT, F, fullscreenstate, -1 1"
-          # Maximise active window
-          "$mod, M, fullscreen, 1"
+        in
+          [
+            # Kill active window
+            "$mod, Q, killactive"
+            # Float active window
+            "$mod, V, togglefloating"
+            # Fullscreen active window
+            "$mod, F, fullscreen, 0"
+            /*
+               Client fullscreen active window -
+            useful for fullscreening videos
+            without fullscreening the whole window
+            */
+            "$mod SHIFT, F, fullscreenstate, -1 1"
+            # Maximise active window
+            "$mod, M, fullscreen, 1"
 
-          # Change the split orientation
-          "$mod, D, togglesplit"
+            # Change the split orientation
+            "$mod, D, togglesplit"
 
-	  # Change focused window
-	  "$mod, H, movefocus, r"
-	  "$mod, J, movefocus, d"
-	  "$mod, K, movefocus, u"
-	  "$mod, L, movefocus, l"
+            # Change focused window
+            "$mod, H, movefocus, r"
+            "$mod, J, movefocus, d"
+            "$mod, K, movefocus, u"
+            "$mod, L, movefocus, l"
 
-          # Media keys
-          ",XF86AudioPlay, exec, ${pctl} play-pause"
-          ",XF86AudioNext, exec, ${pctl} next"
-          ",XF86AudioPrev, exec, ${pctl} previous"
+            # Media keys
+            ",XF86AudioPlay, exec, ${pctl} play-pause"
+            ",XF86AudioNext, exec, ${pctl} next"
+            ",XF86AudioPrev, exec, ${pctl} previous"
 
-	  # Terminal
-	  "$mod, Return, exec, ${lib.getExe pkgs.kitty}"
-	  # Application launcher
-	  "$mod, Space, exec, pgrep fuzzel || ${lib.getExe pkgs.fuzzel}"
-	  # Emoji search
-	  "$mod SHIFT, E, exec, pgrep fuzzel || ${lib.getExe pkgs.bemoji}"
-	  # Color picker
-	  "$mod SHIFT, C, exec, ${lib.getExe color-picker}"
-	  # Screenshot
-	  "$mod SHIFT, S, exec, ${lib.getExe screenshot}"
-	  # Lock screen
-	  "$mod SHIFT, L, exec, pgrep hyprlock || ${lib.getExe pkgs.hyprlock}"
-	  # Reload wifi
-	  "$mod, R, exec, wpa_cli reconnect"
+            # Terminal
+            "$mod, Return, exec, ${lib.getExe pkgs.kitty}"
+            # Application launcher
+            "$mod, Space, exec, pgrep fuzzel || ${lib.getExe pkgs.fuzzel}"
+            # Emoji search
+            "$mod SHIFT, E, exec, pgrep fuzzel || ${lib.getExe pkgs.bemoji}"
+            # Color picker
+            "$mod SHIFT, C, exec, ${lib.getExe color-picker}"
+            # Screenshot
+            "$mod SHIFT, S, exec, ${lib.getExe screenshot}"
+            # Lock screen
+            "$mod SHIFT, L, exec, pgrep hyprlock || ${lib.getExe pkgs.hyprlock}"
+            # Reload wifi
+            "$mod, R, exec, wpa_cli reconnect"
 
-	  # Scratchpads
-	  "$mod, I, togglespecialworkspace, system"
-	  "$mod, C, togglespecialworkspace, calculator"
+            # Scratchpads
+            "$mod, I, togglespecialworkspace, system"
+            "$mod, C, togglespecialworkspace, calculator"
 
-	  # Scroll workspaces
-	  "$mod, mouse_down, workspace, e+1"
-	  "$mod, mouse_up, workspace, e-1"
-        ]
-	# Numbered binds for workspaces 1-10
-	++ lib.concatMap (x: let
-	  key = toString (lib.mod x 10);
-	  wksp = toString x;
-	in [
-	  "$mod, ${key}, workspace, ${wksp}"
-	  "$mod SHIFT, ${key}, movetoworkspace, ${wksp}"
-	]) (lib.range 1 10);
+            # Scroll workspaces
+            "$mod, mouse_down, workspace, e+1"
+            "$mod, mouse_up, workspace, e-1"
+          ]
+          # Numbered binds for workspaces 1-10
+          ++ lib.concatMap (x: let
+            key = toString (lib.mod x 10);
+            wksp = toString x;
+          in [
+            "$mod, ${key}, workspace, ${wksp}"
+            "$mod SHIFT, ${key}, movetoworkspace, ${wksp}"
+          ]) (lib.range 1 10);
 
-	bindm = [
-	  # $mod + left click to drag windows around
-	  "$mod, move:272, movewindow"
-	  # $mod + right click to resize windows
-	  "$mod, mouse:273, resizewindow"
-	];
+        bindm = [
+          # $mod + left click to drag windows around
+          "$mod, move:272, movewindow"
+          # $mod + right click to resize windows
+          "$mod, mouse:273, resizewindow"
+        ];
+
+        plugin.hyprexpo = {
+          columns = 3;
+          gap_size = 20;
+          workspace_method = "first 1";
+          enable_gesture = true;
+          gesture_fingers = 3;
+          gesture_distance = 200;
+          gesture_positive = true;
+        };
       };
     };
   };
