@@ -210,6 +210,8 @@ in {
             };
 
 	    yamlls.enable = true;
+
+	    pyright.enable = true;
           };
         };
 
