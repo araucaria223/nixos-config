@@ -34,8 +34,6 @@ in {
         fastfetch = lib.getExe pkgs.fastfetch;
 	flake = "$(readlink -f ${config.home.homeDirectory}/nixos)";
 
-        git = "${lib.getExe pkgs.git} -C ${flake}";
-
 	rebTemplate = mode: /*sh*/ ''
 	  nixos-rebuild ${mode} \
 	    --flake ${flake}#${settings.hostname} \
@@ -43,7 +41,7 @@ in {
 	    |& ${lib.getExe' pkgs.nix-output-monitor "nom"} \
 	'';
 
-      in rec {
+      in {
         ls = "${eza}";
         lsa = "${eza} -la";
         lst = "${eza} --tree --icons";
@@ -56,6 +54,7 @@ in {
 	rebtest = rebTemplate "test";
 
         up = /*sh*/ "nix flake update --flake ${flake} --commit-lock-file";
+	check = /*sh*/ "nix flake check --flake ${flake}";
       };
 
       initExtra =
