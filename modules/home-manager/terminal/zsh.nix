@@ -55,16 +55,7 @@ in {
         reb = rebTemplate "switch" ;
 	rebtest = rebTemplate "test";
 
-        up =
-          /*
-          sh
-          */
-          ''
-            nix flake update --flake ${flake} && \
-            ${git} add flake.lock && \
-            ${git} commit -m 'Flake update' && \
-            ${reb} \
-          '';
+        up = /*sh*/ "nix flake update --flake ${flake} --commit-lock-file";
       };
 
       initExtra =
