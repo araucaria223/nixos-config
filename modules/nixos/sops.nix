@@ -9,7 +9,7 @@
 
   config = lib.mkIf config.sops-nix.enable {
     sops = {
-      defaultSopsFile = lib.my.paths + /secrets.yaml;
+      defaultSopsFile = lib.my.paths.secrets + /secrets.yaml;
       defaultSopsFormat = "yaml";
       age.keyFile = "/persist/home/${settings.username}/.config/sops/age/keys.txt";
     };
