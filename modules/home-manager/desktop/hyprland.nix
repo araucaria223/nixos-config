@@ -13,11 +13,7 @@
   color-picker = pkgs.writeShellApplication {
     name = "color-picker";
     runtimeInputs = [pkgs.hyprpicker];
-    text =
-      /*
-      sh
-      */
-      "hyprpicker --autocopy";
+    text = ''hyprpicker --autocopy'';
   };
 in {
   options.hyprland.enable = lib.my.mkDefaultTrueEnableOption ''
@@ -148,21 +144,22 @@ in {
           "float, class:(qalculate-gtk)"
           # Spawn calculator in special workspace
           "workspace special:calculator,class:(qalculate-gtk)"
+	  "float, class:(org.keepassxc.KeePassXC)"
+	  "size >50%, class:(org.keepassxc.KeePassXC)"
         ];
 
-        workspace = let
-          cal = lib.getExe pkgs.qalculate-gtk;
-          btm = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.bottom}";
-        in [
+        workspace = [
           # Launch bottom system monitor
           # If system scratchpad opened empty
-          "special:system, on-created-empty:${btm}"
+          "special:system, on-created-empty:${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.bottom}"
           # Launch calculator
-          "special:calculator, on-created-empty:${cal}"
+          "special:calculator, on-created-empty:${lib.getExe pkgs.qalculate-gtk}"
+	  "special:password, on-created-empty:${lib.getExe pkgs.keepassxc}"
         ];
 
         exec-once = [
           "[workspace special:system silent] ${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.bottom}"
+	  "[workspace special:password silent] ${lib.getExe pkgs.keepassxc}"
           (lib.getExe pkgs.waybar)
         ];
 
@@ -235,6 +232,7 @@ in {
             # Scratchpads
             "$mod, I, togglespecialworkspace, system"
             "$mod, C, togglespecialworkspace, calculator"
+	    "$mod, P, togglespecialworkspace, password"
 
             # Scroll workspaces
             "$mod, mouse_down, workspace, e+1"
@@ -251,7 +249,7 @@ in {
 
         bindm = [
           # $mod + left click to drag windows around
-          "$mod, move:272, movewindow"
+          "$mod, mouse:272, movewindow"
           # $mod + right click to resize windows
           "$mod, mouse:273, resizewindow"
         ];
