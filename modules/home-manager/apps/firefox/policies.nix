@@ -2,6 +2,8 @@
   programs.firefox.policies = {
     # Updates are managed by Nix anyway
     DisableAppUpdate = true;
+    ExtensionUpdate = false;
+
     # Directory names should be lowercase
     DefaultDownloadDirectory = "${config.home.homeDirectory}/downloads";
     DownloadDirectory = "${config.home.homeDirectory}/downloads";
@@ -30,8 +32,12 @@
     DisableFirefoxScreenshots = true;
     # Takes up screen space, ugly
     DisplayBookmarksToolbar = "never";
+
     # Firefox is not a password manager
     DisableMasterPasswordCreation = true;
+    OfferToSaveLogins = false;
+    PasswordManagerEnabled = false;
+
     # Why do you care?
     DontCheckDefaultBrowser = true;
 
