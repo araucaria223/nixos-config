@@ -16,8 +16,8 @@
   # Template for a wpa_supplicant configuration entry
   createWPAConfig = network: ''
     network={
-      ssid="${config.sops.placeholder."wireless/${network}/ssid"}"
-      psk=${config.sops.placeholder."wireless/${network}/pskRaw"}
+      ssid="${config.sops.placeholder."network/${network}/ssid"}"
+      psk=${config.sops.placeholder."network/${network}/pskRaw"}
     }
   '';
 in {
@@ -38,19 +38,19 @@ in {
       # Provision secrets for all networks
       secrets = let
 	# Helper function to set the sops file of wireless secrets
-	f = n: v: v // {sopsFile = lib.my.paths.secrets + /wireless.yaml;};
+	f = n: v: v // {sopsFile = lib.my.paths.secrets + /network.yaml;};
       in lib.mkMerge [
 	(forAllNetworks (network: (lib.mapAttrs f {
-	  "wireless/${network}/ssid" = {};
-	  "wireless/${network}/pskRaw" = {};
+	  "network/${network}/ssid" = {};
+	  "network/${network}/pskRaw" = {};
 	})))
 
 	# Including eduroam
 	(lib.mapAttrs f {
-          "wireless/eduroam/identity" = {};
-          "wireless/eduroam/password" = {};
-          "wireless/eduroam/altsubject" = {};
-          "wireless/eduroam/ca_cert" = {};
+          "network/eduroam/identity" = {};
+          "network/eduroam/password" = {};
+          "network/eduroam/altsubject" = {};
+          "network/eduroam/ca_cert" = {};
 	})
       ];
 
@@ -68,11 +68,11 @@ in {
             pairwise=CCMP
             group=CCMP TKIP
             eap=PEAP
-            ca_cert="${config.sops.secrets."wireless/eduroam/ca_cert".path}"
-            identity="${config.sops.placeholder."wireless/eduroam/identity"}"
-            altsubject_match="${config.sops.placeholder."wireless/eduroam/altsubject"}"
+            ca_cert="${config.sops.secrets."network/eduroam/ca_cert".path}"
+            identity="${config.sops.placeholder."network/eduroam/identity"}"
+            altsubject_match="${config.sops.placeholder."network/eduroam/altsubject"}"
             phase2="auth=MSCHAPV2"
-            password="${config.sops.placeholder."wireless/eduroam/password"}"
+            password="${config.sops.placeholder."network/eduroam/password"}"
           }
 	'';
     };
