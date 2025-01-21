@@ -11,3 +11,4 @@ Besides the obvious (flakes, home-manager as a nixos module, etc.) there is also
 - Secure boot with [Lanzaboote](https://github.com/nix-community/lanzaboote)
 - Global colorscheming and typography with [Stylix](https://github.com/danth/stylix)
 - A small collection of custom functions housed in an overlay under `lib.my`
+- Both the latest stable version of nixpkgs (`pkgs`) and the unstable branch (`pkgs.unstable`) are available
