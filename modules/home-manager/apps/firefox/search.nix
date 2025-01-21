@@ -1,9 +1,10 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: {
-  programs.firefox.profiles."${config.home.username}".search = {
+  programs.firefox.profiles."${config.home.username}".search = lib.mkIf config.firefox.enable {
     force = true;
     default = "DuckDuckGo";
 
@@ -75,19 +76,19 @@
       };
 
       "NixOS Wiki" = {
-	urls = [
-	  {
-	    template = "https://wiki.nixos.org/w/index.php";
-	    params = [
-	      {
-		name = "search";
-		value = "{searchTerms}";
-	      }
-	    ];
-	  }
-	];
-	icon = snowflake;
-	definedAliases = ["${prefix}nw"];
+        urls = [
+          {
+            template = "https://wiki.nixos.org/w/index.php";
+            params = [
+              {
+                name = "search";
+                value = "{searchTerms}";
+              }
+            ];
+          }
+        ];
+        icon = snowflake;
+        definedAliases = ["${prefix}nw"];
       };
 
       "Nix Packages" = {

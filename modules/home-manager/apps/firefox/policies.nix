@@ -1,5 +1,9 @@
-{config, ...}: {
-  programs.firefox.policies = {
+{
+  config,
+  lib,
+  ...
+}: {
+  programs.firefox.policies = lib.mkIf config.firefox.enable {
     # Updates are managed by Nix anyway
     DisableAppUpdate = true;
     ExtensionUpdate = false;

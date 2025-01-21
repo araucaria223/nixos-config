@@ -1,4 +1,8 @@
-{...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   programs.firefox.policies.ExtensionSettings = with builtins; let
     ext = shortId: uuid: {
       name = uuid;
@@ -9,7 +13,8 @@
       };
     };
   in
-    listToAttrs [
+    lib.mkIf config.firefox.enable
+    (listToAttrs [
       # Adblocker
       (ext "ublock-origin" "uBlock0@raymondhill.net")
       # Skips youtube sponsored segments
@@ -30,5 +35,5 @@
 
       # Password manager
       (ext "keepassxc-browser" "keepassxc-browser@keepassxc.org")
-    ];
+    ]);
 }
