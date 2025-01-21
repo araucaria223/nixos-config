@@ -19,7 +19,7 @@
 
     sops.secrets.mullvad-device = {
       format = "json";
-      sopsFile = lib.my.paths.secrets + /mullvad.json;
+      sopsFile = lib.my.paths.secrets + /network/mullvad.json;
       key = "";
     };
 
