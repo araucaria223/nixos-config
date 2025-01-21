@@ -38,7 +38,7 @@ in {
       # Provision secrets for all networks
       secrets = let
 	# Helper function to set the sops file of wireless secrets
-	f = n: v: v // {sopsFile = lib.my.paths.secrets + /network.yaml;};
+	f = n: v: v // {sopsFile = lib.my.paths.secrets + /network/secrets.yaml;};
       in lib.mkMerge [
 	(forAllNetworks (network: (lib.mapAttrs f {
 	  "network/${network}/ssid" = {};
@@ -50,8 +50,14 @@ in {
           "network/eduroam/identity" = {};
           "network/eduroam/password" = {};
           "network/eduroam/altsubject" = {};
-          "network/eduroam/ca_cert" = {};
 	})
+
+	{
+	  "network/eduroam/ca_cert" = {
+	      format = "binary";
+	      sopsFile = lib.my.paths.secrets + /network/ca.pem;
+	  };
+	}
       ];
 
       # Specify content of configuration file
