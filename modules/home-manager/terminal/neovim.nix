@@ -120,6 +120,8 @@ in {
         startify.enable = true;
         vim-surround.enable = true;
 
+	# Markdown
+	markview.enable = true;
 	# LaTeX
 	vimtex.enable = true;
 
