@@ -15,8 +15,5 @@ with builtins; rec {
       (v == "directory" || (lib.hasSuffix ".nix" n && !lib.hasSuffix ".old.nix" n)))
     |> lib.mapAttrsToList (name: type: dir + "/${name}");
 
-  mapDefault = bool: features:
-    lib.genAttrs features (_: {enable = lib.mkDefault bool;});
-
   mkDefaultTrueEnableOption = name: lib.mkEnableOption name // {default = true; example = false;};
 }
