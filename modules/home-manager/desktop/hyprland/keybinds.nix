@@ -92,6 +92,7 @@
         "$mod, I, togglespecialworkspace, system"
         "$mod, C, togglespecialworkspace, calculator"
         "$mod, P, togglespecialworkspace, password"
+	"$mod SHIFT, V, togglespecialworkspace, vpn"
 
         # Scroll workspaces
         "$mod, mouse_down, workspace, e+1"

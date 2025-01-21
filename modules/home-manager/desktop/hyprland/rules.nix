@@ -17,6 +17,9 @@
       "float, class:(org.keepassxc.KeePassXC)"
       "size >50%, class:(org.keepassxc.KeePassXC)"
       "workspace special:password, class:(org.keepassxc.KeePassXC)"
+
+      # Mullvad launched in scratchpad
+      "workspace special:vpn, class:(Mullvad VPN)"
     ];
 
     workspace = [
@@ -24,6 +27,7 @@
       "special:system, on-created-empty:${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.bottom}"
       "special:calculator, on-created-empty:${lib.getExe pkgs.qalculate-gtk}"
       "special:password, on-created-empty:${lib.getExe pkgs.keepassxc}"
+      "special:vpn, on-created-empty:${lib.getExe' pkgs.mullvad-vpn "mullvad-vpn"}"
     ];
 
     exec-once = [
