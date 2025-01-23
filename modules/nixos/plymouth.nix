@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  settings,
   ...
 }: {
   options.plymouth.enable = lib.my.mkDefaultTrueEnableOption ''
