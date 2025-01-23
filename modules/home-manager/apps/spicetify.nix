@@ -13,13 +13,19 @@
     spicetify for spotify theming
   '';
 
-  config.programs.spicetify = let
-    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
-  in
-    lib.mkIf config.spicetify.enable {
+  config = lib.mkIf config.spicetify.enable {
+    programs.spicetify = let
+      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+    in {
       enable = true;
       enabledExtensions = with spicePkgs.extensions; [
         shuffle
       ];
     };
+
+    # Save login between reboots
+    home.persistence."/persist/home/${config.home.username}".directories = [
+      ".config/spotify"
+    ];
+  };
 }
