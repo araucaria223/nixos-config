@@ -29,9 +29,6 @@ in {
       history.path = "${config.xdg.dataHome}/zsh/history";
 
       shellAliases = let
-        eza = "${lib.getExe pkgs.eza} --follow-symlinks";
-        bat = lib.getExe pkgs.bat;
-        fastfetch = lib.getExe pkgs.fastfetch;
 	flake = "$(readlink -f ${config.home.homeDirectory}/nixos)";
 
 	rebTemplate = mode: /*sh*/ ''
@@ -41,27 +38,29 @@ in {
 	    |& ${lib.getExe' pkgs.nix-output-monitor "nom"} \
 	'';
 
-      in {
-        ls = "${eza}";
-        lsa = "${eza} -la";
-        lst = "${eza} --tree --icons";
-        cat = "${bat} --theme=base16";
-        f = "${fastfetch} --load-config examples/9.jsonc";
+      in rec {
+        ls = "${lib.getExe pkgs.eza} --follow-symlinks";
+        lsa = "${ls} -la";
+        lst = "${ls} --tree --icons";
+        cat = "${lib.getExe pkgs.bat} --theme=base16";
+        f = "${lib.getExe pkgs.fastfetch} --load-config examples/9.jsonc";
         less = "${pkgs.neovim}/share/nvim/runtime/macros/less.sh";
 	sudo = "sudo ";
 
         reb = rebTemplate "switch" ;
 	rebtest = rebTemplate "test";
 
-        up = /*sh*/ "nix flake update --flake ${flake} --commit-lock-file";
-	check = /*sh*/ "nix flake check --flake ${flake}";
+        up = /*sh*/ ''nix flake update --flake ${flake} --commit-lock-file'';
+	check = /*sh*/ ''nix flake check ${flake}'';
       };
 
+      # Useful function for finding files to persist
       initExtra =
         /*
         sh
         */
         ''
+	  ### GENERATED ###
           function fsdiff {
 	    fd \
             --one-file-system \
