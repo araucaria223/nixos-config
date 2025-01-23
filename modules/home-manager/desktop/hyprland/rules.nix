@@ -33,6 +33,7 @@
     exec-once = [
       "[workspace special:system silent] ${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.bottom}"
       "[workspace special:password silent] ${lib.getExe pkgs.keepassxc}"
+      "[workspace special:vpn silent] ${lib.getExe' pkgs.mullvad-vpn "mullvad-vpn"}"
       (lib.getExe pkgs.waybar)
     ];
   };
