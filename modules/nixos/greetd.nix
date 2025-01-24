@@ -10,8 +10,8 @@
     enable = true;
     settings = rec {
       initial_session = {
-	command = "${config.programs.hyprland.package}/bin/Hyprland";
-	user = "${settings.username}";
+        command = "${config.programs.hyprland.package}/bin/Hyprland";
+        user = "${settings.username}";
       };
       default_session = initial_session;
     };

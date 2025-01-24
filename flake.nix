@@ -110,7 +110,7 @@
           impermanence.nixosModules.impermanence
           sops-nix.nixosModules.sops
           nixos-hardware.nixosModules.framework-12th-gen-intel
-	  stylix.nixosModules.stylix
+          stylix.nixosModules.stylix
         ];
       };
     };

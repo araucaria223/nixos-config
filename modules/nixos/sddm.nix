@@ -13,8 +13,8 @@
     wayland.enable = true;
     settings = {
       Autologin = {
-	Session = "Hyprland.desktop";
-	User = settings.username;
+        Session = "Hyprland.desktop";
+        User = settings.username;
       };
     };
   };

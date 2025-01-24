@@ -14,31 +14,31 @@
       gtk-layer-shell = true;
 
       modules-left = [
-	"hyprland/workspaces"
-	"hyprland/window"
+        "hyprland/workspaces"
+        "hyprland/window"
       ];
 
       modules-center = [
-	"memory"
-	"idle_inhibitor"
-	"clock#time"
-	"clock#date"
-	"bluetooth"
+        "memory"
+        "idle_inhibitor"
+        "clock#time"
+        "clock#date"
+        "bluetooth"
       ];
 
       modules-right = [
-	"pulseaudio"
-	"battery"
+        "pulseaudio"
+        "battery"
       ];
 
       "hyprland/workspaces" = {
-	on-scroll-up = "hyprctl dispatch workspace -1";
-	on-scroll-down = "hyprctl dispatch workspace +1";
+        on-scroll-up = "hyprctl dispatch workspace -1";
+        on-scroll-down = "hyprctl dispatch workspace +1";
       };
 
       "hyprland/window" = {
-	format = "{}";
-	min-length = 5;
+        format = "{}";
+        min-length = 5;
       };
     };
   };

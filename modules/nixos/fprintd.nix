@@ -14,8 +14,8 @@
     # Persist fingerprints
     environment.persistence."/persist/system".directories = [
       {
-	directory = "/var/lib/fprint";
-	mode = "700";
+        directory = "/var/lib/fprint";
+        mode = "700";
       }
     ];
   };

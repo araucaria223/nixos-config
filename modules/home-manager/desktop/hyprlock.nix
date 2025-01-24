@@ -39,7 +39,7 @@
           dots_spacing = 1;
           dots_center = false;
           dots_rounding = -1;
-	  # Transparent
+          # Transparent
           outer_color = "rgba(0, 0, 0, 0)";
           inner_color = "rgba(${base01}b3)";
           font_color = "rgb(${base06})";

@@ -12,7 +12,7 @@ in {
       default = true;
       example = false;
       description = ''
-	Whether pcmanfm should be the default file manager
+        Whether pcmanfm should be the default file manager
       '';
       type = lib.types.bool;
     };
