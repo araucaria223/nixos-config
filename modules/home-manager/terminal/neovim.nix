@@ -55,11 +55,11 @@ in {
       };
 
       autoCmd = [
-	{
-	  event = ["InsertEnter"];
-	  pattern = "*.yaml";
-	  command = ":CloakPreviewLine";
-	}
+        {
+          event = ["InsertEnter"];
+          pattern = "*.yaml";
+          command = ":CloakPreviewLine";
+        }
       ];
 
       keymaps = [
@@ -120,10 +120,12 @@ in {
         startify.enable = true;
         vim-surround.enable = true;
 
-	# Markdown
-	markview.enable = true;
-	# LaTeX
-	vimtex.enable = true;
+        # Markdown
+        markview.enable = true;
+        # LaTeX
+        vimtex.enable = true;
+        # Lean
+        lean.enable = true;
 
         # lsp for embedded code
         otter = {
@@ -153,7 +155,7 @@ in {
           enable = true;
           settings = {
             enabled = true;
-	    cloak_character = "*";
+            cloak_character = "*";
             patterns = [
               {
                 file_pattern = [
@@ -161,7 +163,7 @@ in {
                 ];
 
                 cloak_pattern = [":.+"];
-		replace = "[SECRET] %1";
+                replace = "[SECRET] %1";
               }
             ];
           };
@@ -184,7 +186,7 @@ in {
         };
 
         treesitter-context.enable = true;
-	treesitter-textobjects.enable = true;
+        treesitter-textobjects.enable = true;
         cmp-treesitter.enable = true;
 
         lsp = {
@@ -211,9 +213,9 @@ in {
               installRustc = true;
             };
 
-	    yamlls.enable = true;
+            yamlls.enable = true;
 
-	    pyright.enable = true;
+            pyright.enable = true;
           };
         };
 
