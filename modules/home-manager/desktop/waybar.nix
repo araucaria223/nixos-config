@@ -5,40 +5,47 @@
 }: {
   options.waybar.enable = lib.my.mkDefaultTrueEnableOption "waybar";
 
-  config.programs.waybar = lib.mkIf config.waybar.enable {
-    enable = true;
-    settings.main-bar = {
-      layer = "top";
-      position = "top";
-      mode = "dock";
-      gtk-layer-shell = true;
+  config = lib.mkIf config.waybar.enable {
+    # Execute waybar on hyprland startup
+    wayland.windowManager.hyprland.settings = lib.mkIf config.hyprland.enable {
+      exec-once = [(lib.getExe config.programs.waybar.package)];
+    };
 
-      modules-left = [
-        "hyprland/workspaces"
-        "hyprland/window"
-      ];
+    programs.waybar = {
+      enable = true;
+      settings.main-bar = {
+        layer = "top";
+        position = "top";
+        mode = "dock";
+        gtk-layer-shell = true;
 
-      modules-center = [
-        "memory"
-        "idle_inhibitor"
-        "clock#time"
-        "clock#date"
-        "bluetooth"
-      ];
+        modules-left = [
+          "hyprland/workspaces"
+          "hyprland/window"
+        ];
 
-      modules-right = [
-        "pulseaudio"
-        "battery"
-      ];
+        modules-center = [
+          "memory"
+          "idle_inhibitor"
+          "clock#time"
+          "clock#date"
+          "bluetooth"
+        ];
 
-      "hyprland/workspaces" = {
-        on-scroll-up = "hyprctl dispatch workspace -1";
-        on-scroll-down = "hyprctl dispatch workspace +1";
-      };
+        modules-right = [
+          "pulseaudio"
+          "battery"
+        ];
 
-      "hyprland/window" = {
-        format = "{}";
-        min-length = 5;
+        "hyprland/workspaces" = {
+          on-scroll-up = "hyprctl dispatch workspace -1";
+          on-scroll-down = "hyprctl dispatch workspace +1";
+        };
+
+        "hyprland/window" = {
+          format = "{}";
+          min-length = 5;
+        };
       };
     };
   };
