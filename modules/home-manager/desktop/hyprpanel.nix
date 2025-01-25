@@ -10,10 +10,9 @@
     hyprpanel - a bar based on astal
   '';
 
-  config.programs.hyprpanel = lib.mkif config.hyprpanel.enable {
+  config.programs.hyprpanel = lib.mkIf config.hyprpanel.enable {
     enable = true;
     overlay.enable = true;
-    systemd.enable = true;
     hyprland.enable = true;
 
     layout = {
