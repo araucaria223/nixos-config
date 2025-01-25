@@ -47,6 +47,9 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    # Bar based on astal
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+
     # HM module to configure neovim
     nixvim = {
       url = "github:nix-community/nixvim/nixos-24.11";
