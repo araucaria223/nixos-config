@@ -24,23 +24,24 @@
     };
 
     settings = {
-      bar.clock = {
-        format = "%a %d/%m %H:%M";
+      bar = {
+        clock.format = "%a %d/%m %H:%M";
+	media.show_active_only = true;
       };
 
       menus = {
-	clock = {
-	  time = {
-	    hideSeconds = true;
-	    military = true;
-	  };
+        clock = {
+          time = {
+            hideSeconds = true;
+            military = true;
+          };
 
-	  weather.unit = "metric";
-	};
+          weather.unit = "metric";
+        };
 
-	dashboard = {
-	  directories.enabled = false;
-	};
+        dashboard = {
+          directories.enabled = false;
+        };
       };
     };
   };
