@@ -16,10 +16,31 @@
     hyprland.enable = true;
 
     layout = {
-      "0" = {
-	left = ["dashboard workspaces"];
-	middle = ["media"];
-	right = ["volume" "bluetooth" "battery" "systray" "clock" "notifications"];
+      "bar.layouts"."0" = {
+        left = ["dashboard" "workspaces"];
+        middle = ["media"];
+        right = ["volume" "bluetooth" "battery" "systray" "clock" "notifications"];
+      };
+    };
+
+    settings = {
+      bar.clock = {
+        format = "%a %d/%m %H:%M";
+      };
+
+      menus = {
+	clock = {
+	  time = {
+	    hideSeconds = true;
+	    military = true;
+	  };
+
+	  weather.unit = "metric";
+	};
+
+	dashboard = {
+	  directories.enabled = false;
+	};
       };
     };
   };
