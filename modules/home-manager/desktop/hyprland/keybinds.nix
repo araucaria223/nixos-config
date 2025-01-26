@@ -45,7 +45,7 @@
 
       exit-special-workspace = pkgs.writeShellApplication {
 	name = "exit-special-workspace";
-	runtimeInputs = with pkgs; [jq ydotool];
+	runtimeInputs = [pkgs.jq];
 	text = ''
 	  ws=$( \
 	    hyprctl -j monitors \
