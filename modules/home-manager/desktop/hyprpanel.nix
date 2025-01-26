@@ -2,6 +2,7 @@
   config,
   lib,
   inputs,
+  pkgs,
   ...
 }: {
   imports = [inputs.hyprpanel.homeManagerModules.hyprpanel];
@@ -10,37 +11,45 @@
     hyprpanel - a bar based on astal
   '';
 
-  config.programs.hyprpanel = lib.mkIf config.hyprpanel.enable {
-    enable = true;
-    overlay.enable = true;
-    hyprland.enable = true;
-
-    layout = {
-      "bar.layouts"."0" = {
-        left = ["dashboard" "workspaces"];
-        middle = ["media"];
-        right = ["volume" "bluetooth" "battery" "systray" "clock" "notifications"];
-      };
+  config = lib.mkIf config.hyprpanel.enable {
+    wayland.windowManager.hyprland.settings = lib.mkIf config.hyprland.enable {
+      bind = [
+	"$mod SHIFT, P, exec, ${lib.getExe pkgs.hyprpanel} t powermenu"
+      ];
     };
 
-    settings = {
-      bar = {
-        clock.format = "%a %d/%m %H:%M";
-	media.show_active_only = true;
+    programs.hyprpanel = {
+      enable = true;
+      overlay.enable = true;
+      hyprland.enable = true;
+
+      layout = {
+        "bar.layouts"."0" = {
+          left = ["dashboard" "workspaces"];
+          middle = ["media"];
+          right = ["volume" "netstat" "bluetooth" "battery" "systray" "clock" "notifications"];
+        };
       };
 
-      menus = {
-        clock = {
-          time = {
-            hideSeconds = true;
-            military = true;
-          };
-
-          weather.unit = "metric";
+      settings = {
+        bar = {
+          clock.format = "%a %d/%m %H:%M";
+          media.show_active_only = true;
         };
 
-        dashboard = {
-          directories.enabled = false;
+        menus = {
+          clock = {
+            time = {
+              hideSeconds = true;
+              military = true;
+            };
+
+            weather.unit = "metric";
+          };
+
+          dashboard = {
+            directories.enabled = false;
+          };
         };
       };
     };
