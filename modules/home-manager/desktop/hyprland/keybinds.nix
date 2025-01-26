@@ -42,6 +42,21 @@
         runtimeInputs = with pkgs; [grim slurp swappy];
         text = ''pgrep slurp || grim -g "$(slurp)" - | swappy -f'';
       };
+
+      exit-special-workspace = pkgs.writeShellApplication {
+	name = "exit-special-workspace";
+	runtimeInputs = with pkgs; [jq ydotool];
+	text = ''
+	  ws=$( \
+	    hyprctl -j monitors \
+	    | jq '[.[]|.specialWorkspace.name][0]' \
+	    | tr -d '"' | cut -d ':' -f 2 \
+	  )
+	  if [[ -n "$ws" ]]; then
+	    hyprctl dispatch togglespecialworkspace "$ws"
+	  fi
+	'';
+      };
     in
       [
         # Kill active window
@@ -89,6 +104,7 @@
         "$mod, R, exec, wpa_cli reconnect"
 
         # Scratchpads
+	"$mod, Escape, exec, ${lib.getExe exit-special-workspace}"
         "$mod, I, togglespecialworkspace, system"
         "$mod, C, togglespecialworkspace, calculator"
         "$mod, P, togglespecialworkspace, password"
