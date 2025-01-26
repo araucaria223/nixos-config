@@ -14,8 +14,10 @@
   config = lib.mkIf config.hyprpanel.enable {
     wayland.windowManager.hyprland.settings = lib.mkIf config.hyprland.enable {
       bind = [
-	"$mod SHIFT, P, exec, ${lib.getExe pkgs.hyprpanel} t powermenu"
+        "$mod SHIFT, P, exec, ${lib.getExe pkgs.hyprpanel} t powermenu"
       ];
+
+      windowrulev2 = ["workspace special:hyprpanel-settings, title:(hyprpanel-settings)"];
     };
 
     programs.hyprpanel = {
@@ -27,14 +29,16 @@
         "bar.layouts"."0" = {
           left = ["dashboard" "workspaces"];
           middle = ["media"];
-          right = ["volume" "netstat" "bluetooth" "battery" "systray" "clock" "notifications"];
+          right = ["volume" "bluetooth" "battery" "systray" "clock" "notifications"];
         };
       };
 
       settings = {
         bar = {
+          workspaces.ignored = ''^-\\d+$'';
           clock.format = "%a %d/%m %H:%M";
           media.show_active_only = true;
+          launcher.autoDetectIcon = true;
         };
 
         menus = {
