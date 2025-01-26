@@ -11,15 +11,11 @@
   '';
 
   config = lib.mkIf config.hyprland.enable {
-    xdg = {
-      # Enable the hyprland desktop portal
-      portal = with pkgs; {
-        enable = true;
-        extraPortals = [xdg-desktop-portal-hyprland];
-        configPackages = [xdg-desktop-portal-hyprland];
-      };
-
-      mimeApps.enable = true;
+    # Enable the hyprland desktop portal
+    xdg.portal = with pkgs; rec {
+      enable = true;
+      extraPortals = [xdg-desktop-portal-hyprland];
+      configPackages = extraPortals;
     };
 
     wayland.windowManager.hyprland = {
