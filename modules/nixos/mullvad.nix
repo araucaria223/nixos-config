@@ -20,6 +20,7 @@
     sops.secrets.mullvad-device = {
       format = "json";
       sopsFile = lib.my.paths.secrets + /network/mullvad.json;
+      # Read the entire sops file, do not extract values
       key = "";
     };
 
