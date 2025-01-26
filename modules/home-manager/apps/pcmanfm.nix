@@ -7,7 +7,7 @@
   cfg = config.pcmanfm;
 in {
   options.pcmanfm = {
-    enable = lib.my.mkDefaultTrueEnableOption "pcmanfm";
+    enable = lib.mkEnableOption "pcmanfm";
     isDefault = lib.mkOption {
       default = true;
       example = false;
