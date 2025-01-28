@@ -44,18 +44,18 @@
       };
 
       exit-special-workspace = pkgs.writeShellApplication {
-	name = "exit-special-workspace";
-	runtimeInputs = [pkgs.jq];
-	text = ''
-	  ws=$( \
-	    hyprctl -j monitors \
-	    | jq '[.[]|.specialWorkspace.name][0]' \
-	    | tr -d '"' | cut -d ':' -f 2 \
-	  )
-	  if [[ -n "$ws" ]]; then
-	    hyprctl dispatch togglespecialworkspace "$ws"
-	  fi
-	'';
+        name = "exit-special-workspace";
+        runtimeInputs = [pkgs.jq];
+        text = ''
+          ws=$( \
+            hyprctl -j monitors \
+            | jq '[.[]|.specialWorkspace.name][0]' \
+            | tr -d '"' | cut -d ':' -f 2 \
+          )
+          if [[ -n "$ws" ]]; then
+            hyprctl dispatch togglespecialworkspace "$ws"
+          fi
+        '';
       };
     in
       [
@@ -104,7 +104,7 @@
         "$mod, R, exec, wpa_cli reconnect"
 
         # Scratchpads
-	"$mod, Escape, exec, ${lib.getExe exit-special-workspace}"
+        "$mod, Escape, exec, ${lib.getExe exit-special-workspace}"
         "$mod, I, togglespecialworkspace, system"
         "$mod, C, togglespecialworkspace, calculator"
         "$mod, P, togglespecialworkspace, password"
