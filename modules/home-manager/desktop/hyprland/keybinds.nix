@@ -57,13 +57,6 @@
 
       bind = let
         pctl = lib.getExe pkgs.playerctl;
-        hyprpicker = "${lib.getExe pkgs.hyprpicker} --autocopy";
-
-        screenshot = pkgs.writeShellApplication {
-          name = "screenshot";
-          runtimeInputs = with pkgs; [grim slurp swappy];
-          text = ''pgrep slurp || grim -g "$(slurp)" - | swappy -f -'';
-        };
       in
         [
           # Kill active window
@@ -105,9 +98,9 @@
           # Emoji search
           "$mod SHIFT, E, exec, pgrep fuzzel || ${lib.getExe pkgs.bemoji}"
           # Color picker
-          "$mod SHIFT, C, exec, ${hyprpicker}"
+          "$mod SHIFT, C, exec, ${lib.getExe pkgs.hyprpicker} --autocopy"
           # Screenshot
-          "$mod SHIFT, S, exec, ${lib.getExe screenshot}"
+          "$mod SHIFT, S, exec, ${lib.getExe pkgs.shellScripts.screenshot}"
           # Lock screen
           "$mod SHIFT, L, exec, pgrep hyprlock || ${lib.getExe pkgs.hyprlock}"
           # Reload wifi
