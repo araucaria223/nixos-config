@@ -20,6 +20,9 @@
       windowrulev2 = ["workspace special:hyprpanel-settings, title:(hyprpanel-settings)"];
     };
 
+    # Provision weather api key secret
+    sops.secrets."weather.json" = {};
+
     programs.hyprpanel = {
       enable = true;
       overlay.enable = true;
@@ -48,7 +51,10 @@
               military = true;
             };
 
-            weather.unit = "metric";
+            weather = {
+	      unit = "metric";
+	      key = config.sops.secrets."weather.json".path;
+	    };
           };
 
           dashboard = {
