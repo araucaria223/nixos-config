@@ -34,16 +34,8 @@
         "CTRL,XF86MonBrightnessDown, exec, ${bctl} s 1%-"
       ];
 
-      bind = let
-        pctl = lib.getExe pkgs.playerctl;
-        hyprpicker = "${lib.getExe pkgs.hyprpicker} --autocopy";
-
-        screenshot = pkgs.writeShellApplication {
-          name = "screenshot";
-          runtimeInputs = with pkgs; [grim slurp swappy];
-          text = ''pgrep slurp || grim -g "$(slurp)" - | swappy -f'';
-        };
-
+      # Non-consuming, passed to active window as well
+      bindn = let
         exit-special-workspace = pkgs.writeShellApplication {
           name = "exit-special-workspace";
           runtimeInputs = [pkgs.jq];
@@ -57,6 +49,20 @@
               hyprctl dispatch togglespecialworkspace "$ws"
             fi
           '';
+        };
+      in [
+        # Use escape to exit any special workspace
+        ", Escape, exec, ${lib.getExe exit-special-workspace}"
+      ];
+
+      bind = let
+        pctl = lib.getExe pkgs.playerctl;
+        hyprpicker = "${lib.getExe pkgs.hyprpicker} --autocopy";
+
+        screenshot = pkgs.writeShellApplication {
+          name = "screenshot";
+          runtimeInputs = with pkgs; [grim slurp swappy];
+          text = ''pgrep slurp || grim -g "$(slurp)" - | swappy -f'';
         };
       in
         [
@@ -108,7 +114,6 @@
           "$mod, R, exec, wpa_cli reconnect"
 
           # Scratchpads
-          "$mod, Escape, exec, ${lib.getExe exit-special-workspace}"
           "$mod, I, togglespecialworkspace, system"
           "$mod, C, togglespecialworkspace, calculator"
           "$mod, P, togglespecialworkspace, password"
@@ -129,39 +134,44 @@
     };
 
     # Submaps are not properly implemented in the home-manager module yet
-    extraConfig = ''
-      ### GENERATED ###
-      submap = fastedit
-	# Vim binds
+    extraConfig =
+      /*
+      hyprlang
+      */
+      ''
+             ### GENERATED ###
+             submap = fastedit
+        # Vim binds
 
-	# Moving active window
-	bind = , h, movefocus, l
-	bind = , j, movefocus, d
-	bind = , k, movefocus, u
-	bind = , l, movefocus, r
+        # Moving active window
+        bind = , h, movefocus, l
+        bind = , j, movefocus, d
+        bind = , k, movefocus, u
+        bind = , l, movefocus, r
 
-	# Window resizing
-	bind = CTRL, h, resizeactive, -10 0
-	bind = CTRL, j, resizeactive, 0 10
-	bind = CTRL, k, resizeactive, 0 -10
-	bind = CTRL, l, resizeactive, 10 0
+        # Window resizing
+        binde = CTRL, h, resizeactive, -10 0
+        binde = CTRL, j, resizeactive, 0 10
+        binde = CTRL, k, resizeactive, 0 -10
+        binde = CTRL, l, resizeactive, 10 0
 
-	# Arrow keys
+        # Arrow keys
 
-	# Moving active window
-	bind = , left, movefocus, l
-	bind = , right, movefocus, r
-	bind = , up, movefocus, u
-	bind = , down, movefocus, d
+        # Moving active window
+        bind = , left, movefocus, l
+        bind = , right, movefocus, r
+        bind = , up, movefocus, u
+        bind = , down, movefocus, d
 
-	# Window resizing
-	bind = CTRL, right, resizeactive, 10 0
-	bind = CTRL, left, resizeactive, -10 0
-	bind = CTRL, up, resizeactive, 0 -10
-	bind = CTRL, down, resizeactive, 0 10
-	bind = , escape, submap, reset
-      submap = reset
-      ### ENDGENERATED ###
-    '';
+        # Window resizing
+        binde = CTRL, right, resizeactive, 10 0
+        binde = CTRL, left, resizeactive, -10 0
+        binde = CTRL, up, resizeactive, 0 -10
+        binde = CTRL, down, resizeactive, 0 10
+
+        bind = , Escape, submap, reset
+             submap = reset
+             ### ENDGENERATED ###
+      '';
   };
 }
