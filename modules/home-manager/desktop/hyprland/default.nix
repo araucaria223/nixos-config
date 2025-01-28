@@ -20,7 +20,11 @@
 
     wayland.windowManager.hyprland = {
       enable = true;
-      systemd.enable = true;
+      systemd = {
+	enable = true;
+	# Fix for programs not working properly in systemd services
+	variables = ["--all"];
+      };
 
       settings = {
         monitor = [",preffered,auto,1"];
