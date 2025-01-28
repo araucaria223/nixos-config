@@ -169,7 +169,8 @@
         binde = CTRL, up, resizeactive, 0 -10
         binde = CTRL, down, resizeactive, 0 10
 
-        bind = , Escape, submap, reset
+	# Exit submap when any unbound key is pressed
+        bind = , catchall, submap, reset
              submap = reset
              ### ENDGENERATED ###
       '';
