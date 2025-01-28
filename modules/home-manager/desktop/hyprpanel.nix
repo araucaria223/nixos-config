@@ -30,7 +30,7 @@
 
       layout = {
         "bar.layouts"."0" = {
-          left = ["dashboard" "workspaces"];
+          left = ["dashboard" "workspaces" "submap"];
           middle = ["media"];
           right = ["volume" "bluetooth" "battery" "systray" "clock" "notifications"];
         };
@@ -42,6 +42,10 @@
           clock.format = "%a %d/%m %H:%M";
           media.show_active_only = true;
           launcher.autoDetectIcon = true;
+	  customModules.submap = {
+	    leftClick = "hyprctl dispatch submap fastedit";
+	    rightClick = "hyprctl dispatch submap reset";
+	  };
         };
 
         menus = {
