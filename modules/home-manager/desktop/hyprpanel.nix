@@ -63,6 +63,7 @@
 
           dashboard = {
             directories.enabled = false;
+	    shortcuts.enabled = false;
           };
         };
       };
