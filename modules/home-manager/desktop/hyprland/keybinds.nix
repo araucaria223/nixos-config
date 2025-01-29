@@ -136,17 +136,11 @@
              submap = fastedit
         # Vim binds
 
-        # Moving active window
-        bind = , h, movefocus, l
-        bind = , j, movefocus, d
-        bind = , k, movefocus, u
-        bind = , l, movefocus, r
-
         # Window resizing
-        binde = CTRL, h, resizeactive, -10 0
-        binde = CTRL, j, resizeactive, 0 10
-        binde = CTRL, k, resizeactive, 0 -10
-        binde = CTRL, l, resizeactive, 10 0
+        binde = , h, resizeactive, -10 0
+        binde = , j, resizeactive, 0 10
+        binde = , k, resizeactive, 0 -10
+        binde = , l, resizeactive, 10 0
 
         # Arrow keys
 
@@ -155,12 +149,6 @@
         bind = , right, movefocus, r
         bind = , up, movefocus, u
         bind = , down, movefocus, d
-
-        # Window resizing
-        binde = CTRL, right, resizeactive, 10 0
-        binde = CTRL, left, resizeactive, -10 0
-        binde = CTRL, up, resizeactive, 0 -10
-        binde = CTRL, down, resizeactive, 0 10
 
 	# Exit submap when any unbound key is pressed
         bind = , catchall, submap, reset
