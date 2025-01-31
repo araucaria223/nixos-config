@@ -39,7 +39,7 @@ in {
       opts = {
         number = true;
         shiftwidth = 2;
-        mouse = "";
+	mouse = "";
       };
 
       extraConfigVim = ''
@@ -112,6 +112,7 @@ in {
       plugins = {
         # status line
         lualine.enable = true;
+
         # shows indents
         indent-blankline.enable = true;
         # trims whitespace
@@ -125,7 +126,10 @@ in {
         # LaTeX
         vimtex.enable = true;
         # Lean
-        lean.enable = true;
+        lean = {
+	  enable = true;
+	  infoview.width = 30;
+	};
 
         # lsp for embedded code
         otter = {
