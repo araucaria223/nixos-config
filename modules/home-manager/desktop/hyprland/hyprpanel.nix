@@ -42,10 +42,13 @@
           clock.format = "%a %d/%m %H:%M";
           media.show_active_only = true;
           launcher.autoDetectIcon = true;
-	  customModules.submap = {
-	    leftClick = "hyprctl dispatch submap fastedit";
-	    rightClick = "hyprctl dispatch submap reset";
-	  };
+          customModules = {
+            submap = {
+              leftClick = "hyprctl dispatch submap fastedit";
+              rightClick = "hyprctl dispatch submap reset";
+            };
+            hyprsunset.temperature = "3700K";
+          };
         };
 
         menus = {
@@ -56,14 +59,14 @@
             };
 
             weather = {
-	      unit = "metric";
-	      key = config.sops.secrets."weather.json".path;
-	    };
+              unit = "metric";
+              key = config.sops.secrets."weather.json".path;
+            };
           };
 
           dashboard = {
             directories.enabled = false;
-	    shortcuts.enabled = false;
+            shortcuts.enabled = false;
           };
         };
       };
