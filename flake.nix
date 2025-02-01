@@ -37,7 +37,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Theming
-    stylix.url = "github:danth/stylix";
+    stylix.url = "github:danth/stylix/release-24.11";
 
     # Wayland compositor
     hyprland.url = "github:hyprwm/Hyprland";
