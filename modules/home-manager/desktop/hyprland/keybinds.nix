@@ -132,28 +132,28 @@
       hyprlang
       */
       ''
-             ### GENERATED ###
-             submap = fastedit
-        # Vim binds
+                    ### GENERATED ###
+                    submap = fastedit
+               # Vim binds
 
-        # Window resizing
-        binde = , h, resizeactive, -10 0
-        binde = , j, resizeactive, 0 10
-        binde = , k, resizeactive, 0 -10
-        binde = , l, resizeactive, 10 0
+               # Window resizing
+               binde = , h, resizeactive, -10 0
+               binde = , j, resizeactive, 0 10
+               binde = , k, resizeactive, 0 -10
+               binde = , l, resizeactive, 10 0
 
-        # Arrow keys
+               # Arrow keys
 
-        # Moving active window
-        bind = , left, movefocus, l
-        bind = , right, movefocus, r
-        bind = , up, movefocus, u
-        bind = , down, movefocus, d
+               # Moving active window
+               bind = , left, movefocus, l
+               bind = , right, movefocus, r
+               bind = , up, movefocus, u
+               bind = , down, movefocus, d
 
-	# Exit submap when any unbound key is pressed
-        bind = , catchall, submap, reset
-             submap = reset
-             ### ENDGENERATED ###
+        # Exit submap when any unbound key is pressed
+               bind = , catchall, submap, reset
+                    submap = reset
+                    ### ENDGENERATED ###
       '';
   };
 }

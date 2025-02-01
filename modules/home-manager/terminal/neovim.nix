@@ -39,7 +39,7 @@ in {
       opts = {
         number = true;
         shiftwidth = 2;
-	mouse = "";
+        mouse = "";
       };
 
       extraConfigVim = ''
@@ -127,9 +127,9 @@ in {
         vimtex.enable = true;
         # Lean
         lean = {
-	  enable = true;
-	  infoview.width = 30;
-	};
+          enable = true;
+          infoview.width = 30;
+        };
 
         # lsp for embedded code
         otter = {
