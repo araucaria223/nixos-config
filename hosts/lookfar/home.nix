@@ -6,4 +6,6 @@
   waybar.enable = false;
   hyprpanel.enable = true;
   mako.enable = false;
+
+  spicetify.enable = false;
 }
