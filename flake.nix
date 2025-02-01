@@ -47,12 +47,17 @@
 	flake-compat.follows = "flake-compat";
 	flake-utils.follows = "flake-utils";
 	nixpkgs.follows = "nixpkgs";
+	home-manager.follows = "home-manager";
 	systems.follows = "systems";
       };
     };
 
     # Wayland compositor
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.systems.follows = "systems";
+    };
+
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       # Pin plugin versions to hyprland verion
@@ -117,7 +122,10 @@
 
     # Purely to reduce closure size
     flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
 
