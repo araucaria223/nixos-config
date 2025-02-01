@@ -30,14 +30,26 @@
     # Secure boot
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs = {
+	nixpkgs.follows = "nixpkgs-unstable";
+	flake-compat.follows = "flake-compat";
+	flake-parts.follows = "flake-parts";
+      };
     };
 
     # Hardware optimisations
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Theming
-    stylix.url = "github:danth/stylix/release-24.11";
+    stylix = {
+      url = "github:danth/stylix/release-24.11";
+      inputs = {
+	flake-compat.follows = "flake-compat";
+	flake-utils.follows = "flake-utils";
+	nixpkgs.follows = "nixpkgs";
+	systems.follows = "systems";
+      };
+    };
 
     # Wayland compositor
     hyprland.url = "github:hyprwm/Hyprland";
@@ -48,34 +60,67 @@
     };
 
     # Bar based on astal
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # HM module to configure neovim
     nixvim = {
       url = "github:nix-community/nixvim/nixos-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+	nixpkgs.follows = "nixpkgs";
+	home-manager.follows = "home-manager";
+	flake-compat.follows = "flake-compat";
+	flake-parts.follows = "flake-parts";
+      };
     };
 
     # Doom emacs for nix
     unstraightened = {
       url = "github:marienz/nix-doom-emacs-unstraightened";
-      inputs.nixpkgs.follows = "";
+      inputs = {
+	nixpkgs.follows = "";
+	systems.follows = "systems";
+      };
     };
 
     # VSCode extensions
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs = {
+	nixpkgs.follows = "nixpkgs-unstable";
+	flake-compat.follows = "flake-compat";
+	flake-utils.follows = "flake-utils";
+      };
     };
 
     # Spotify themes & extensions
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+	nixpkgs.follows = "nixpkgs";
+	systems.follows = "systems";
+	flake-compat.follows = "flake-compat";
+      };
     };
 
     # Vencord plugin manager
-    nixcord.url = "github:kaylorben/nixcord";
+    nixcord = {
+      url = "github:kaylorben/nixcord";
+      inputs = {
+	nixpkgs.follows = "nixpkgs";
+	systems.follows = "systems";
+	flake-compat.follows = "flake-compat";
+      };
+    };
+
+    # Purely to reduce closure size
+    flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
+    flake-utils.url = "github:numtide/flake-utils";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    systems.url = "github:nix-systems/default";
+
   };
 
   outputs = {
