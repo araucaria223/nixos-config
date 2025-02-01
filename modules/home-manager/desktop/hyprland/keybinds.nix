@@ -100,7 +100,7 @@
           # Color picker
           "$mod SHIFT, C, exec, ${lib.getExe pkgs.hyprpicker} --autocopy"
           # Screenshot
-          "$mod SHIFT, S, exec, ${lib.getExe pkgs.shellScripts.screenshot}"
+          "$mod SHIFT, S, exec, ${lib.getExe pkgs.my.screenshot}"
           # Lock screen
           "$mod SHIFT, L, exec, pgrep hyprlock || ${lib.getExe pkgs.hyprlock}"
           # Reload wifi
