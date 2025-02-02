@@ -14,7 +14,7 @@
     settings = {
       Autologin = {
         Session = "Hyprland.desktop";
-        User = settings.username;
+        User = config.users.users.${settings.username}.name;
       };
     };
   };

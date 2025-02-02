@@ -59,9 +59,11 @@
     };
 
     # Set correct permissions for home impermanence
-    systemd.tmpfiles.rules = [
+    systemd.tmpfiles.rules = let
+      username = config.users.users.${settings.username}.name;
+    in [
       "d /persist/home/ 177 root root -"
-      "d /persist/home/${settings.username} 0770 ${settings.username} users -"
+      "d /persist/home/${username} 0770 ${username} users -"
     ];
 
     programs.fuse.userAllowOther = true;

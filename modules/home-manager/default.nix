@@ -20,9 +20,9 @@
   };
 
   # Define username and home directory
-  home = {
-    username = "${settings.username}";
-    homeDirectory = "/home/${settings.username}";
+  home = rec {
+    username = settings.username;
+    homeDirectory = "/home/${username}";
   };
 
   # Enable home-manager

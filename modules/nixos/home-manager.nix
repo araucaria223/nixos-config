@@ -12,9 +12,9 @@
     extraSpecialArgs = {inherit inputs outputs settings lib;};
     backupFileExtension = "backup";
     users = {
-      "${config.users.users."${settings.username}".name}" = {...}: {
+      "${config.users.users.${settings.username}.name}" = {...}: {
         imports = [
-          (import ../../hosts/${settings.hostname}/home.nix)
+          (import ../../hosts/${config.networking.hostName}/home.nix)
           ../home-manager
           inputs.sops-nix.homeManagerModules.sops
         ];

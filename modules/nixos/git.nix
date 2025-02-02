@@ -8,13 +8,16 @@
 
   config.programs.git = lib.mkIf config.git.enable {
     enable = true;
-    config = {
+    config = let
+      username = config.users.users.${settings.username}.name;
+      hostname = config.networking.hostName;
+    in {
       init.defaultBranch = "main";
-      safe.directory = ["/home/${settings.username}/nixos"];
+      safe.directory = ["/home/${username}/nixos"];
 
       user = {
-        email = "${settings.username}@${settings.hostname}";
-        name = "${settings.username}";
+        email = "${username}@${hostname}";
+        name = username;
       };
 
       url."https://github.com/".insteadOf = [

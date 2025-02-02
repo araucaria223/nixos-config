@@ -11,7 +11,7 @@
     sops = {
       defaultSopsFile = lib.my.paths.secrets + /secrets.yaml;
       defaultSopsFormat = "yaml";
-      age.keyFile = "/persist/home/${settings.username}/.config/sops/age/keys.txt";
+      age.keyFile = "/persist/home/${config.users.users.${settings.username}.name}/.config/sops/age/keys.txt";
     };
     environment.systemPackages = [pkgs.sops];
   };
