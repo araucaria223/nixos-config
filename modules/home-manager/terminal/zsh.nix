@@ -40,13 +40,14 @@ in {
             |& ${lib.getExe' pkgs.nix-output-monitor "nom"} \
         '';
       in rec {
+        sudo = "sudo ";
         ls = "${lib.getExe pkgs.eza} --follow-symlinks";
         lsa = "${ls} -la";
         lst = "${ls} --tree --icons";
         cat = "${lib.getExe pkgs.bat} --theme=base16";
         f = "${lib.getExe pkgs.fastfetch} --load-config examples/9.jsonc";
         less = "${pkgs.neovim}/share/nvim/runtime/macros/less.sh";
-        sudo = "sudo ";
+	df = "df -xfuse -xtmpfs -h";
 
         reb = rebTemplate "switch";
         rebtest = rebTemplate "test";
