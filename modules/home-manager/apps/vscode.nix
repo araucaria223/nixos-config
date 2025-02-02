@@ -24,6 +24,8 @@
         mvllow.rose-pine
         jnoortheen.nix-ide
         esbenp.prettier-vscode
+        leanprover.lean4
+        mkhl.direnv
       ];
 
       userSettings = {
