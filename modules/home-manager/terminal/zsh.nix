@@ -47,7 +47,7 @@ in {
         cat = "${lib.getExe pkgs.bat} --theme=base16";
         f = "${lib.getExe pkgs.fastfetch} --load-config examples/9.jsonc";
         less = "${pkgs.neovim}/share/nvim/runtime/macros/less.sh";
-	df = "df -xfuse -xtmpfs -h";
+        df = "${lib.getExe' pkgs.coreutils "df"} -xfuse -xtmpfs -h";
 
         reb = rebTemplate "switch";
         rebtest = rebTemplate "test";
