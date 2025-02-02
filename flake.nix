@@ -31,9 +31,9 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs = {
-	nixpkgs.follows = "nixpkgs-unstable";
-	flake-compat.follows = "flake-compat";
-	flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs-unstable";
+        flake-compat.follows = "flake-compat";
+        flake-parts.follows = "flake-parts";
       };
     };
 
@@ -44,11 +44,11 @@
     stylix = {
       url = "github:danth/stylix/release-24.11";
       inputs = {
-	flake-compat.follows = "flake-compat";
-	flake-utils.follows = "flake-utils";
-	nixpkgs.follows = "nixpkgs";
-	home-manager.follows = "home-manager";
-	systems.follows = "systems";
+        flake-compat.follows = "flake-compat";
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+        systems.follows = "systems";
       };
     };
 
@@ -74,10 +74,10 @@
     nixvim = {
       url = "github:nix-community/nixvim/nixos-24.11";
       inputs = {
-	nixpkgs.follows = "nixpkgs";
-	home-manager.follows = "home-manager";
-	flake-compat.follows = "flake-compat";
-	flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+        flake-compat.follows = "flake-compat";
+        flake-parts.follows = "flake-parts";
       };
     };
 
@@ -85,8 +85,8 @@
     unstraightened = {
       url = "github:marienz/nix-doom-emacs-unstraightened";
       inputs = {
-	nixpkgs.follows = "";
-	systems.follows = "systems";
+        nixpkgs.follows = "";
+        systems.follows = "systems";
       };
     };
 
@@ -94,9 +94,9 @@
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs = {
-	nixpkgs.follows = "nixpkgs-unstable";
-	flake-compat.follows = "flake-compat";
-	flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs-unstable";
+        flake-compat.follows = "flake-compat";
+        flake-utils.follows = "flake-utils";
       };
     };
 
@@ -104,9 +104,9 @@
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs = {
-	nixpkgs.follows = "nixpkgs";
-	systems.follows = "systems";
-	flake-compat.follows = "flake-compat";
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+        flake-compat.follows = "flake-compat";
       };
     };
 
@@ -114,9 +114,9 @@
     nixcord = {
       url = "github:kaylorben/nixcord";
       inputs = {
-	nixpkgs.follows = "nixpkgs";
-	systems.follows = "systems";
-	flake-compat.follows = "flake-compat";
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+        flake-compat.follows = "flake-compat";
       };
     };
 
@@ -128,7 +128,6 @@
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
-
   };
 
   outputs = {
