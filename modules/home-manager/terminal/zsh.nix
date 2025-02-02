@@ -32,9 +32,7 @@ in {
         flake = "$(readlink -f ${config.home.homeDirectory}/nixos)";
 
         rebTemplate = mode:
-        /*
-        sh
-        */
+        # sh
         ''
           nixos-rebuild ${mode} \
             --flake ${flake}#${settings.hostname} \
@@ -54,22 +52,16 @@ in {
         rebtest = rebTemplate "test";
 
         up =
-          /*
-          sh
-          */
+          # sh
           ''nix flake update --flake ${flake} --commit-lock-file'';
         check =
-          /*
-          sh
-          */
+          # sh
           ''nix flake check ${flake}'';
       };
 
       # Useful function for finding files to persist
       initExtra =
-        /*
-        sh
-        */
+        # sh
         ''
           ### GENERATED ###
                  function fsdiff {

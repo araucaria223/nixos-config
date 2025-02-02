@@ -128,9 +128,7 @@
 
     # Submaps are not properly implemented in the home-manager module yet
     extraConfig =
-      /*
-      hyprlang
-      */
+      # hyprlang
       ''
                     ### GENERATED ###
                     submap = fastedit

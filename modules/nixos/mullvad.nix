@@ -28,9 +28,7 @@
     systemd.services."mullvad-daemon".postStart = let
       mullvad = lib.getExe' config.services.mullvad-vpn.package "mullvad";
     in
-      /*
-      sh
-      */
+      # sh
       ''
         while ! ${mullvad} status >/dev/null; do sleep 1; done
         ${mullvad} connect
