@@ -103,7 +103,7 @@
           # Screenshot
           "$mod SHIFT, S, exec, ${lib.getExe pkgs.my.screenshot}"
           # Lock screen
-          "$mod SHIFT, L, exec, pgrep hyprlock || ${lib.getExe pkgs.hyprlock}"
+          "$mod SHIFT, L, exec, loginctl lock-session"
           # Reload wifi
           "$mod, R, exec, wpa_cli reconnect"
 
