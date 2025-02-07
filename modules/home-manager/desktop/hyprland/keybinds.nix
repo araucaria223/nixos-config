@@ -144,10 +144,16 @@
               ", right, movefocus, r"
               ", up, movefocus, u"
               ", down, movefocus, d "
+
+	      ", u, movewindow, l"
+	      ", i, movewindow, d"
+	      ", o, movewindow, u"
+	      ", p, movewindow, r"
             ];
 
             bindm = [
               ", mouse:272, movewindow"
+	      ", mouse:273, resizewindow"
             ];
           };
 
