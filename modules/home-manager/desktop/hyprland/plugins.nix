@@ -26,7 +26,7 @@
       bind = [
         "$mod, down, hyprexpo:expo, enable"
         "$mod, up, hyprexpo:expo, disable"
-	", Escape, hyprexpo:expo, disable"
+        ", Escape, hyprexpo:expo, disable"
       ];
     };
   };

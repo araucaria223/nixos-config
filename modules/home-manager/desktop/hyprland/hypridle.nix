@@ -25,11 +25,11 @@ in {
       enable = true;
 
       settings = {
-	general = {
-	  lock_cmd = "pidof hyprlock || ${lib.getExe pkgs.hyprlock}";
-	  before_sleep_cmd = "loginctl lock-session";
-	  after_sleep_cmd = "hyprctl dispatch dpm on";
-	};
+        general = {
+          lock_cmd = "pidof hyprlock || ${lib.getExe pkgs.hyprlock}";
+          before_sleep_cmd = "loginctl lock-session";
+          after_sleep_cmd = "hyprctl dispatch dpm on";
+        };
 
         listener = [
           {
