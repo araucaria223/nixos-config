@@ -116,6 +116,8 @@
           # Scroll workspaces
           "$mod, mouse_down, workspace, e+1"
           "$mod, mouse_up, workspace, e-1"
+          "$mod, right, workspace, e+1"
+          "$mod, left, workspace, e-1"
         ]
         # Numbered binds for workspaces 1-10
         ++ lib.concatMap (x: let
@@ -145,22 +147,22 @@
               ", up, movefocus, u"
               ", down, movefocus, d "
 
-	      ", u, movewindow, l"
-	      ", i, movewindow, d"
-	      ", o, movewindow, u"
-	      ", p, movewindow, r"
+              ", u, movewindow, l"
+              ", i, movewindow, d"
+              ", o, movewindow, u"
+              ", p, movewindow, r"
             ];
 
             bindm = [
               ", mouse:272, movewindow"
-	      ", mouse:273, resizewindow"
+              ", mouse:273, resizewindow"
             ];
           };
 
           extraConfig = ''
-	    bind = , catchall, submap, reset
-	  '';
-	};
+            bind = , catchall, submap, reset
+          '';
+        };
       };
     in
       lib.concatStringsSep "\n" (
