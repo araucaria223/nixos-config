@@ -19,14 +19,17 @@ in {
   options.hypridle.enable = lib.my.mkDefaultTrueEnableOption "hypridle";
 
   config.services.hypridle = let
-    lock-cmd = "pidof hyprlock || ${lib.getExe pkgs.hyprlock}";
+    lock-cmd = "loginctl lock-session";
   in
     lib.mkIf config.hypridle.enable {
       enable = true;
+
       settings = {
-        lock_cmd = lock-cmd;
-        before_sleep_cmd = lock-cmd;
-        after_sleep_cmd = "hyprctl dispatch dpms on";
+	general = {
+	  lock_cmd = "pidof hyprlock || ${lib.getExe pkgs.hyprlock}";
+	  before_sleep_cmd = "loginctl lock-session";
+	  after_sleep_cmd = "hyprctl dispatch dpm on";
+	};
 
         listener = [
           {
