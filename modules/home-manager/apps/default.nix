@@ -14,6 +14,13 @@
     pcmanfm
   ];
 
+  programs.neovide = lib.mkDefault {
+    enable = true;
+    settings = {
+      font.size = 7.0;
+    };
+  };
+
   # Set default applications
   xdg.mimeApps = lib.mkDefault rec {
     enable = true;
