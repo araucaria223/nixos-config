@@ -15,7 +15,10 @@
         general = {
           disable_loading_bar = true;
           hide_cursor = true;
+          ignore_empty_input = true;
+          enable_fingerprint = true;
         };
+
         background = {
           path = "${config.stylix.image}";
           blur_passes = 2;
