@@ -20,7 +20,7 @@
     defaultApplications = let
       browser = ["firefox.desktop"];
     in {
-      "application/pdf" = ["zathura.desktop"];
+      "application/pdf" = ["org.pwmt.zathura.desktop"];
 
       "text/html" = browser;
       "x-scheme-handler/http" = browser;
