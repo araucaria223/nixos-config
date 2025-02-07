@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: {
   wayland.windowManager.hyprland = lib.mkIf config.hyprland.enable {
@@ -127,31 +128,48 @@
     };
 
     # Submaps are not properly implemented in the home-manager module yet
-    extraConfig =
-      # hyprlang
-      ''
-                    ### GENERATED ###
-                    submap = fastedit
-               # Vim binds
+    extraConfig = let
+      submaps = {
+        fastedit = {
+          settings = {
+            binde = [
+              ", h, resizeactive, -10 0"
+              ", j, resizeactive, 0 10"
+              ", k, resizeactive, 0 -10"
+              ", l, resizeactive, 10 0"
+            ];
 
-               # Window resizing
-               binde = , h, resizeactive, -10 0
-               binde = , j, resizeactive, 0 10
-               binde = , k, resizeactive, 0 -10
-               binde = , l, resizeactive, 10 0
+            bind = [
+              ", left, movefocus, l"
+              ", right, movefocus, r"
+              ", up, movefocus, u"
+              ", down, movefocus, d "
+            ];
 
-               # Arrow keys
+            bindm = [
+              ", mouse:272, movewindow"
+            ];
+          };
 
-               # Moving active window
-               bind = , left, movefocus, l
-               bind = , right, movefocus, r
-               bind = , up, movefocus, u
-               bind = , down, movefocus, d
-
-        # Exit submap when any unbound key is pressed
-               bind = , catchall, submap, reset
-                    submap = reset
-                    ### ENDGENERATED ###
-      '';
+          extraConfig = ''
+	    bind = , catchall, submap, reset
+	  '';
+	};
+      };
+    in
+      lib.concatStringsSep "\n" (
+        lib.mapAttrsToList
+        (name: submap: (
+          "submap = ${name}\n"
+          + lib.optionalString (submap.settings != {}) (
+            inputs.home-manager.lib.hm.generators.toHyprconf {
+              attrs = submap.settings;
+            }
+          )
+          + lib.optionalString (submap.extraConfig != "") submap.extraConfig
+          + "submap = reset"
+        ))
+        submaps
+      );
   };
 }
