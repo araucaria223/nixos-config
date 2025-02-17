@@ -18,7 +18,7 @@
       ];
 
       # Repeat if held
-      binde = let
+      bindel = let
         pamixer = lib.getExe pkgs.pamixer;
         bctl = lib.getExe pkgs.brightnessctl;
       in [
