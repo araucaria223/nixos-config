@@ -25,8 +25,8 @@
 
     # Save login between reboots
     home.persistence."/persist/home/${config.home.username}".directories = [
-      ".config/spotify"
-      ".cache/spotify"
+      "${config.xdg.configHome}/spotify"
+      "${config.xdg.cacheHome}/spotify"
     ];
   };
 }
