@@ -3,7 +3,11 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  keepass = "${lib.getExe pkgs.keepassxc} ${config.xdg.dataHome}/passwords/Passwords.kbdx";
+  bottom = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.bottom}";
+  mullvad = "${lib.getExe' pkgs.mullvad-vpn "mullvad-vpn"}";
+in {
   wayland.windowManager.hyprland.settings = lib.mkIf config.hyprland.enable {
     windowrulev2 = [
       # Prevent apps from launching maximised
@@ -24,16 +28,16 @@
 
     workspace = [
       # Launch apps in scratchpads when they are created empty
-      "special:system, on-created-empty:${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.bottom}"
+      "special:system, on-created-empty:${bottom}"
       "special:calculator, on-created-empty:${lib.getExe pkgs.qalculate-gtk}"
-      "special:password, on-created-empty:${lib.getExe pkgs.keepassxc}"
-      "special:vpn, on-created-empty:${lib.getExe' pkgs.mullvad-vpn "mullvad-vpn"}"
+      "special:password, on-created-empty: ${keepass}"
+      "special:vpn, on-created-empty:${mullvad}"
     ];
 
     exec-once = [
-      "[workspace special:system silent] ${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.bottom}"
-      "[workspace special:password silent] ${lib.getExe pkgs.keepassxc}"
-      "[workspace special:vpn silent] ${lib.getExe' pkgs.mullvad-vpn "mullvad-vpn"}"
+      "[workspace special:system silent] ${bottom}"
+      "[workspace special:password silent] ${keepass}"
+      "[workspace special:vpn silent] ${mullvad}"
     ];
   };
 }
