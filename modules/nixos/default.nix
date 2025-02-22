@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   inputs,
   outputs,
@@ -22,6 +23,14 @@
   stylix.enable = lib.mkDefault true;
   # Disable useradd and groupadd commands
   users.mutableUsers = lib.mkDefault false;
+
+  # Set machine ID
+  sops.secrets."machine-id/${config.networking.hostName}" = {
+    sopsFile = lib.my.paths.secrets + /machine-id.yaml;
+    mode = "0664";
+  };
+
+  environment.etc.machine-id.source = config.sops.secrets."machine-id/${config.networking.hostName}".path;
 
   # Nix/Nixpkgs modifications
   nixpkgs = {
