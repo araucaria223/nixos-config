@@ -9,7 +9,10 @@
   '';
 
   config = lib.mkIf config.keepassxc.enable {
-    home.persistence."/persist/home/${config.home.username}".directories = ["${config.xdg.configHome}/keepassxc"];
+    home.persistence."/persist/home/${config.home.username}".directories = [
+      "${config.xdg.configHome}/keepassxc"
+      "${config.xdg.dataHome}/passwords"
+    ];
     home.packages = [pkgs.keepassxc];
   };
 }
