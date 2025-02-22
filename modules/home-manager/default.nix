@@ -11,23 +11,26 @@
     ++ [inputs.impermanence.nixosModules.home-manager.impermanence];
 
   options = let
-    inherit (builtins) baseNameOf;
     inherit (lib.types) str;
-    inherit (config.xdg) configHome cacheHome dataHome;
   in {
     configDir = lib.mkOption {
       type = str;
-      default = baseNameOf configHome;
+      default = ".config";
     };
 
     cacheDir = lib.mkOption {
       type = str;
-      default = baseNameOf cacheHome;
+      default = ".cache";
     };
 
     dataDir = lib.mkOption {
       type = str;
-      default = baseNameOf dataHome;
+      default = ".local/share";
+    };
+
+    stateDir = lib.mkOption {
+      type = str;
+      default = ".local/state";
     };
   };
 
@@ -51,6 +54,14 @@
     # Enable home-manager
     programs.home-manager.enable = true;
     # Manage xdg base directories etc.
-    xdg.enable = true;
+    xdg = let
+      home = config.home.homeDirectory;
+    in {
+      enable = true;
+      configHome = home + "/${config.configDir}";
+      dataHome = home + "/${config.dataDir}";
+      cacheHome = home + "/${config.cacheDir}";
+      stateHome = home + "/${config.stateDir}";
+    };
   };
 }

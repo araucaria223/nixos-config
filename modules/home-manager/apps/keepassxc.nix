@@ -10,8 +10,8 @@
 
   config = lib.mkIf config.keepassxc.enable {
     home.persistence."/persist/home/${config.home.username}".directories = [
-      "${config.xdg.configHome}/keepassxc"
-      "${config.xdg.dataHome}/passwords"
+      "${config.configDir}/keepassxc"
+      "${config.dataDir}/passwords"
     ];
     home.packages = [pkgs.keepassxc];
   };
