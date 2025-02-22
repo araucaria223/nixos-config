@@ -13,9 +13,9 @@
         [
           ".ssh"
           ".pki"
-          "${config.xdg.configHome}/sops/age"
-          "${config.xdg.dataHome}/keyrings"
-          "${config.xdg.dataHome}/direnv"
+          "${config.configDir}/sops/age"
+          "${config.dataDir}/keyrings"
+          "${config.dataDir}/direnv"
         ]
         ++ lib.my.symlink [
           "nixos"

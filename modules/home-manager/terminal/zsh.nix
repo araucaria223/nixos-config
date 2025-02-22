@@ -26,7 +26,7 @@ in {
       syntaxHighlighting.enable = true;
 
       history.size = 10000;
-      history.path = "${config.xdg.dataHome}/zsh/history";
+      history.path = "${config.dataDir}/zsh/history";
 
       shellAliases = let
         flake = "$(readlink -f ${config.home.homeDirectory}/nixos)";

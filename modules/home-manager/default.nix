@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   inputs,
   outputs,
@@ -9,24 +10,47 @@
     lib.my.validImports ./.
     ++ [inputs.impermanence.nixosModules.home-manager.impermanence];
 
-  nixpkgs = {
-    overlays = with outputs.overlays; [
-      additions
-      modifications
-      unstable-packages
-    ];
+  options = let
+    inherit (builtins) baseNameOf;
+    inherit (lib.types) str;
+    inherit (config.xdg) configHome cacheHome dataHome;
+  in {
+    configDir = lib.mkOption {
+      type = str;
+      default = baseNameOf configHome;
+    };
 
-    config.allowUnfree = true;
+    cacheDir = lib.mkOption {
+      type = str;
+      default = baseNameOf cacheHome;
+    };
+
+    dataDir = lib.mkOption {
+      type = str;
+      default = baseNameOf dataHome;
+    };
   };
 
-  # Define username and home directory
-  home = rec {
-    username = settings.username;
-    homeDirectory = "/home/${username}";
-  };
+  config = {
+    nixpkgs = {
+      overlays = with outputs.overlays; [
+        additions
+        modifications
+        unstable-packages
+      ];
 
-  # Enable home-manager
-  programs.home-manager.enable = true;
-  # Manage xdg base directories etc.
-  xdg.enable = true;
+      config.allowUnfree = true;
+    };
+
+    # Define username and home directory
+    home = rec {
+      username = settings.username;
+      homeDirectory = "/home/${username}";
+    };
+
+    # Enable home-manager
+    programs.home-manager.enable = true;
+    # Manage xdg base directories etc.
+    xdg.enable = true;
+  };
 }
