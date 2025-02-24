@@ -7,6 +7,5 @@
   hyprpanel.enable = true;
   mako.enable = false;
 
-  spicetify.enable = false;
   emacs.enable = false;
 }
