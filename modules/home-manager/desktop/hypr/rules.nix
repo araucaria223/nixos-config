@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  keepass = "${lib.getExe pkgs.keepassxc} ${config.xdg.dataHome}/passwords/Passwords.kbdx";
+  keepass = "${lib.getExe pkgs.keepassxc} -- ${config.xdg.dataHome}/passwords/Passwords.kbdx";
   bottom = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.bottom}";
   mullvad = "${lib.getExe' pkgs.mullvad-vpn "mullvad-vpn"}";
 in {
@@ -30,7 +30,7 @@ in {
       # Launch apps in scratchpads when they are created empty
       "special:system, on-created-empty:${bottom}"
       "special:calculator, on-created-empty:${lib.getExe pkgs.qalculate-gtk}"
-      "special:password, on-created-empty: ${keepass}"
+      "special:password, on-created-empty:${keepass}"
       "special:vpn, on-created-empty:${mullvad}"
     ];
 
