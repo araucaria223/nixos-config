@@ -95,7 +95,7 @@
           # Terminal
           "$mod, Return, exec, ${lib.getExe pkgs.kitty}"
           # Application launcher
-          "$mod, Space, exec, pgrep fuzzel || ${lib.getExe pkgs.fuzzel}"
+          "$mod, Space, exec, pgrep fuzzel || ${lib.getExe config.programs.fuzzel.package}"
           # Emoji search
           "$mod SHIFT, E, exec, pgrep fuzzel || ${lib.getExe pkgs.bemoji}"
           # Color picker
