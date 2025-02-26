@@ -27,8 +27,8 @@ in {
       enable = true;
       openDefaultPorts = true;
       user = settings.username;
-      dataDir = "/home/${settings.username}";
-      configDir = "/home/${settings.username}/.config/syncthing";
+      dataDir = "/persist/home/${settings.username}";
+      configDir = "/persist/home/${settings.username}/.config/syncthing";
 
       settings = {
 	cert = config.sops.secrets."syncthing/cert.pem".path;
@@ -48,7 +48,7 @@ in {
 
         folders = {
           "Passwords" = {
-            path = "/home/${username}/.local/share/passwords";
+            path = "/persist/home/${username}/.local/share/passwords";
             devices = ["phone"];
           };
         };
