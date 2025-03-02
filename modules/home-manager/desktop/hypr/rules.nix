@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  keepass = "${lib.getExe pkgs.keepassxc} -- ${config.xdg.dataHome}/passwords/Passwords.kbdx";
+  keepass = "${lib.getExe pkgs.keepassxc} -- ${config.xdg.dataHome}/passwords/Passwords.kdbx";
   bottom = "${lib.getExe pkgs.kitty} -e ${lib.getExe pkgs.bottom}";
   mullvad = "${lib.getExe' pkgs.mullvad-vpn "mullvad-vpn"}";
 in {
