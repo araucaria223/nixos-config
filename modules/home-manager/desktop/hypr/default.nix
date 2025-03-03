@@ -30,6 +30,7 @@
         monitor = [",preffered,auto,1"];
         input = {
           follow_mouse = true;
+	  kb_options = "caps:swapescape";
           touchpad = {
             natural_scroll = false;
             scroll_factor = 0.6;
