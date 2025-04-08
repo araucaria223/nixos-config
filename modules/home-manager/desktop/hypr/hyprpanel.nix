@@ -28,15 +28,15 @@
       overlay.enable = true;
       hyprland.enable = true;
 
-      layout = {
-        "bar.layouts"."0" = {
-          left = ["dashboard" "workspaces" "submap"];
-          middle = ["media"];
-          right = ["volume" "bluetooth" "battery" "systray" "clock" "notifications"];
-        };
-      };
-
       settings = {
+	layout = {
+	  "bar.layouts"."0" = {
+	    left = ["dashboard" "workspaces" "submap"];
+	    middle = ["media"];
+	    right = ["volume" "bluetooth" "battery" "systray" "clock" "notifications"];
+	  };
+	};
+
         bar = {
           workspaces.ignored = ''^-\\d+$'';
           clock.format = "%a %d/%m %H:%M";
