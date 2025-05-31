@@ -5,11 +5,17 @@
 }: {
   imports = lib.my.validImports ./.;
 
+  nixcord.enable = false;
+
   home.packages = with pkgs; [
     # Torrent client
     qbittorrent
     # GUI file manager
     pcmanfm
+    # Browser for the Tor network
+    tor-browser-bundle-bin
+    # GNOME graphical unarchiver
+    file-roller
   ];
 
   programs.neovide = lib.mkDefault {
