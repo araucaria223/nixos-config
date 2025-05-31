@@ -62,6 +62,19 @@
       dataHome = home + "/${config.dataDir}";
       cacheHome = home + "/${config.cacheDir}";
       stateHome = home + "/${config.stateDir}";
+
+      userDirs = {
+	enable = true;
+	music = home + "/media/music";
+	videos = home + "/media/videos";
+	pictures = home + "/media/pictures";
+	download = home + "/downloads";
+	documents = home + "/documents";
+	templates = null;
+	publicShare = null;
+	desktop = null;
+	createDirectories = true;
+      };
     };
   };
 }
