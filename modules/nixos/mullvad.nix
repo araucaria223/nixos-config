@@ -32,7 +32,7 @@
       ''
         while ! ${mullvad} status >/dev/null; do sleep 1; done
         ${mullvad} connect
-        ${mullvad} dns set default --block-ads --block-trackers --block-malware
+        ${mullvad} dns set default --block-ads --block-trackers --block-malware --block-adult-content
         ${mullvad} tunnel set wireguard --daita on
       '';
   };
