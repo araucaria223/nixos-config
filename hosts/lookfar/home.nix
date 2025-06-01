@@ -8,4 +8,5 @@
   mako.enable = false;
 
   emacs.enable = false;
+  alacritty.enable = false;
 }

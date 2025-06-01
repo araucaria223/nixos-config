@@ -2,13 +2,13 @@
   description = "NixOS Config Flake";
 
   inputs = {
-    # CURRENT STABLE VERSION - NIXOS 24.11
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    # CURRENT STABLE VERSION - NIXOS 25.05
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # User environment management
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -42,13 +42,9 @@
 
     # Theming
     stylix = {
-      url = "github:danth/stylix/release-24.11";
+      url = "github:danth/stylix/release-25.05";
       inputs = {
-        flake-compat.follows = "flake-compat";
-        flake-utils.follows = "flake-utils";
         nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-        systems.follows = "systems";
       };
     };
 
@@ -72,11 +68,9 @@
 
     # HM module to configure neovim
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.11";
+      url = "github:nix-community/nixvim/nixos-25.05";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-        flake-compat.follows = "flake-compat";
         flake-parts.follows = "flake-parts";
       };
     };
@@ -113,7 +107,6 @@
       url = "github:kaylorben/nixcord";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
         flake-compat.follows = "flake-compat";
       };
     };

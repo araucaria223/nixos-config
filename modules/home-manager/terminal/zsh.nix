@@ -61,7 +61,7 @@ in {
       };
 
       # Useful function for finding files to persist
-      initExtra =
+      initContent =
         # sh
         ''
           ### GENERATED ###

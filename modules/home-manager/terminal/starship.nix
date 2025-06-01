@@ -16,6 +16,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    stylix.targets.starship.enable = false;
     programs.starship = let
       elemsConcatted = concatStrings (
         map (s: "\$${s}") [

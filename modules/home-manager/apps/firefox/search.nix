@@ -6,7 +6,7 @@
 }: {
   programs.firefox.profiles."${config.home.username}".search = lib.mkIf config.firefox.enable {
     force = true;
-    default = "DuckDuckGo";
+    default = "ddg";
 
     engines = let
       prms = [
@@ -29,12 +29,12 @@
       prefix = ".";
     in {
       # Debloating
-      Bing.metaData.hidden = true;
-      eBay.metaData.hidden = true;
+      bing.metaData.hidden = true;
+      ebay.metaData.hidden = true;
 
       # Alias shortening
-      Google.metaData.alias = "${prefix}g";
-      DuckDuckGo.metaData.alias = "${prefix}ddg";
+      google.metaData.alias = "${prefix}g";
+      ddg.metaData.alias = "${prefix}ddg";
 
       # Swiss-based privacy-focused engine
       Swisscows = {
@@ -49,7 +49,7 @@
             ];
           }
         ];
-        iconUpdateURL = "swisscows.com/favicon.ico";
+        icon = "swisscows.com/favicon.ico";
         updateInterval = daily;
         definedAliases = ["${prefix}sc"];
       };
@@ -70,7 +70,7 @@
           }
         ];
         # Pull icon from the instance
-        iconUpdateURL = "${instance}/favicon.ico";
+        icon = "${instance}/favicon.ico";
         updateInterval = daily;
         definedAliases = ["${prefix}sx"];
       };
@@ -126,7 +126,7 @@
             ];
           }
         ];
-        iconUpdateURL = "https://mynixos.com/favicon.ico";
+        icon = "https://mynixos.com/favicon.ico";
         updateInterval = daily;
         definedAliases = ["${prefix}mn"];
       };
@@ -160,7 +160,7 @@
             ];
           }
         ];
-        iconUpdateURL = "https://noogle.dev/favicon.ico";
+        icon = "https://noogle.dev/favicon.ico";
         updateInterval = daily;
         definedAliases = ["${prefix}ns"];
       };
@@ -177,7 +177,7 @@
             ];
           }
         ];
-        iconUpdateURL = "https://www.youtube.com/s/desktop/060ac52e/img/favicon.ico";
+        icon = "https://www.youtube.com/s/desktop/060ac52e/img/favicon.ico";
         updateInterval = daily;
         definedAliases = ["${prefix}yt"];
       };
@@ -195,7 +195,7 @@
             ];
           }
         ];
-        iconUpdateURL = "https://nyaa.si/static/favicon.png";
+        icon = "https://nyaa.si/static/favicon.png";
         updateInterval = daily;
         definedAliases = ["${prefix}ny"];
       };
@@ -212,7 +212,7 @@
             ];
           }
         ];
-        iconUpdateURL = "https://nyaa.si/static/favicon.png";
+        icon = "https://nyaa.si/static/favicon.png";
         updateInterval = daily;
         definedAliases = ["${prefix}sp"];
       };

@@ -18,23 +18,25 @@
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;
-      extensions = with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
-        vscodevim.vim
-        yzhang.markdown-all-in-one
-        mvllow.rose-pine
-        jnoortheen.nix-ide
-        esbenp.prettier-vscode
-        leanprover.lean4
-        mkhl.direnv
-      ];
+      profiles.default = {
+        extensions = with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
+          vscodevim.vim
+          yzhang.markdown-all-in-one
+          mvllow.rose-pine
+          jnoortheen.nix-ide
+          esbenp.prettier-vscode
+          leanprover.lean4
+          mkhl.direnv
+        ];
 
-      userSettings = {
-        workbench.colorTheme = "Rosé Pine";
-        editor.defaultFormatter = "esbenp.prettier-vscode";
-        editor.formatOnSave = true;
-        nix = {
-          serverPath = lib.getExe pkgs.nixd;
-          formatterPath = lib.getExe outputs.formatter.${pkgs.system};
+        userSettings = {
+          workbench.colorTheme = "Rosé Pine";
+          editor.defaultFormatter = "esbenp.prettier-vscode";
+          editor.formatOnSave = true;
+          nix = {
+            serverPath = lib.getExe pkgs.nixd;
+            formatterPath = lib.getExe outputs.formatter.${pkgs.system};
+          };
         };
       };
     };

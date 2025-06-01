@@ -11,6 +11,8 @@
     # Persist firefox's data
     home.persistence."/persist/home/${config.home.username}".directories = [".mozilla"];
 
+    stylix.targets.firefox.profileNames = [config.home.username];
+
     programs.firefox = {
       enable = true;
 
@@ -21,13 +23,16 @@
           "browser.startup.homepage" = "about:newtab";
         };
 
-        bookmarks = [
-          {
-            name = "NixOS Wiki";
-            tags = ["wiki" "nix"];
-            url = "https://wiki.nixos.org";
-          }
-        ];
+        bookmarks = {
+          force = true;
+          settings = [
+            {
+              name = "NixOS Wiki";
+              tags = ["wiki" "nix"];
+              url = "https://wiki.nixos.org";
+            }
+          ];
+        };
       };
     };
   };
