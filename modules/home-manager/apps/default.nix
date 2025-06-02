@@ -16,6 +16,8 @@
     tor-browser-bundle-bin
     # GNOME graphical unarchiver
     file-roller
+    # GNOME graphical disk utility
+    gnome-disk-utility
   ];
 
   programs.neovide = lib.mkDefault {
