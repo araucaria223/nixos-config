@@ -37,6 +37,8 @@
 	  };
 	};
 
+	theme.bar.transparent = true;
+
         bar = {
           workspaces.ignored = ''^-\\d+$'';
           clock.format = "%a %d/%m %H:%M";
