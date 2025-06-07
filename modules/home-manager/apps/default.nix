@@ -5,7 +5,7 @@
 }: {
   imports = lib.my.validImports ./.;
 
-  nixcord.enable = false;
+  #nixcord.enable = false;
 
   home.packages = with pkgs; [
     # Torrent client
