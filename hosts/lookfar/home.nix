@@ -9,4 +9,5 @@
 
   emacs.enable = false;
   alacritty.enable = false;
+  floorp.enable = true;
 }
