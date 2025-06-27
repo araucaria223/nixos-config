@@ -61,7 +61,10 @@
     };
 
     # Bar based on astal
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # HM module to configure neovim
     nixvim = {
