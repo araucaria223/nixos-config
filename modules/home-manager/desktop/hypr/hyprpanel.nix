@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: {
-  imports = [inputs.hyprpanel.homeManagerModules.hyprpanel];
+  #imports = [inputs.hyprpanel.homeManagerModules.hyprpanel];
 
   options.hyprpanel.enable = lib.mkEnableOption ''
     hyprpanel - a bar based on astal
@@ -25,8 +25,9 @@
 
     programs.hyprpanel = {
       enable = true;
-      overlay.enable = true;
-      hyprland.enable = true;
+      #overlay.enable = true;
+      #hyprland.enable = true;
+      #overwrite.enable = true;
 
       settings = {
 	layout = {
