@@ -94,13 +94,7 @@
     };
 
     # Spotify themes & extensions
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
-    };
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
     # Vencord plugin manager
     nixcord = {
