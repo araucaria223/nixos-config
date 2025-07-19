@@ -11,5 +11,6 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/${settings.colorScheme}.yaml";
     # Wallpaper image
     image = lib.my.paths.assets + /wallpapers/${settings.wallpaper};
+    polarity = "dark";
   };
 }
