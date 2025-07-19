@@ -6,6 +6,7 @@
   imports = lib.my.validImports ./.;
 
   #nixcord.enable = false;
+  #spicetify.enable = false;
 
   home.packages = with pkgs; [
     # Torrent client
