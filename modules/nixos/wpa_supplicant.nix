@@ -9,6 +9,7 @@
   networks = [
     "home"
     "hotspot"
+    "uni"
   ];
 
   forAllNetworks = f: lib.mkMerge (builtins.map f networks);
