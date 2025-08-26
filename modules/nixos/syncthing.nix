@@ -21,14 +21,18 @@ in {
 	format = "binary";
 	sopsFile = lib.my.paths.secrets + /syncthing/key.pem;
       };
+
+      # "syncthing/password" = {
+      #   sopsFile = lib.my.paths.secrets + /syncthing/secrets.yaml;
+      # };
     };
 
     services.syncthing = {
       enable = true;
       openDefaultPorts = true;
       user = settings.username;
-      dataDir = "/persist/home/${settings.username}";
-      configDir = "/persist/home/${settings.username}/.config/syncthing";
+      dataDir = "/persist/home/${username}";
+      configDir = "/persist/home/${username}/.config/syncthing";
 
       settings = {
 	cert = config.sops.secrets."syncthing/cert.pem".path;
@@ -38,9 +42,11 @@ in {
 
         gui = {
           user = username;
-          # Awaiting merge of https://github.com/NixOS/nixpkgs/pull/290485
-          password = "password";
+	  password = "password";
         };
+
+        # Awaiting merge of https://github.com/NixOS/nixpkgs/pull/290485
+	# guiPasswordFile = config.sops.secrets."syncthing/password".path;
 
         devices.phone = {
           id = "7JTFZJC-NJGSLWY-RIW7P2I-GXU5BY3-MVEAIK3-U6NQVY2-LD5DMX3-WAB5SAF";
