@@ -1,7 +1,8 @@
 {...}: {
   imports = [./hardware-configuration.nix];
 
-  hardware.bluetooth.enable = true;
+  #hardware.bluetooth.enable = true;
+  bluetooth.enable = true;
   fprintd.enable = true;
 
   sddm.enable = false;
