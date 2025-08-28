@@ -32,8 +32,6 @@
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs = {
         nixpkgs.follows = "nixpkgs-unstable";
-        flake-compat.follows = "flake-compat";
-        flake-parts.follows = "flake-parts";
       };
     };
 
@@ -51,7 +49,6 @@
     # Wayland compositor
     hyprland = {
       url = "github:hyprwm/Hyprland";
-      inputs.systems.follows = "systems";
     };
 
     hyprland-plugins = {
@@ -71,7 +68,6 @@
       url = "github:nix-community/nixvim/nixos-25.05";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
       };
     };
 
@@ -80,7 +76,6 @@
       url = "github:marienz/nix-doom-emacs-unstraightened";
       inputs = {
         nixpkgs.follows = "";
-        systems.follows = "systems";
       };
     };
 
@@ -89,7 +84,6 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs = {
         nixpkgs.follows = "nixpkgs-unstable";
-        flake-utils.follows = "flake-utils";
       };
     };
 
@@ -101,18 +95,8 @@
       url = "github:kaylorben/nixcord";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-compat.follows = "flake-compat";
       };
     };
-
-    # Purely to reduce closure size
-    flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
-    };
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    systems.url = "github:nix-systems/default";
   };
 
   outputs = {
