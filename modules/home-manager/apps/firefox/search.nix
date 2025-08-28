@@ -37,7 +37,8 @@
       ddg.metaData.alias = "${prefix}ddg";
 
       # Swiss-based privacy-focused engine
-      Swisscows = {
+      swisscows = {
+	name = "SwissCows";
         urls = [
           {
             template = "https://swisscows.com/web";
@@ -55,9 +56,10 @@
       };
 
       # Private meta-search enging
-      SearXNG = let
+      searxng = let
         instance = "https://searxng.site";
       in {
+	name = "SearXNG";
         urls = [
           {
             template = "${instance}/search";
@@ -75,7 +77,8 @@
         definedAliases = ["${prefix}sx"];
       };
 
-      "NixOS Wiki" = {
+      nixos-wiki = {
+	name = "NixOS Wiki";
         urls = [
           {
             template = "https://wiki.nixos.org/w/index.php";
@@ -91,7 +94,8 @@
         definedAliases = ["${prefix}nw"];
       };
 
-      "Nix Packages" = {
+      nix-packages = {
+	name = "Nix Packages";
         urls = [
           {
             template = "https://search.nixos.org/packages";
@@ -102,7 +106,8 @@
         definedAliases = ["${prefix}np"];
       };
 
-      "NixOS Options" = {
+      nixos-options = {
+	name = "NixOS Options";
         urls = [
           {
             template = "https://search.nixos.org/options";
@@ -114,7 +119,8 @@
       };
 
       # Combined packages and options search
-      "MyNixOS Search" = {
+      mynixos = {
+	name = "MyNixOS";
         urls = [
           {
             template = "https://mynixos.com/search";
@@ -131,7 +137,8 @@
         definedAliases = ["${prefix}mn"];
       };
 
-      "Nixpkgs PR Tracker" = {
+      nixpkgs-pr-tracker = {
+	name = "Nixpkgs PR Tracker";
         urls = [
           {
             template = "https://nixpk.gs/pr-tracker.html";
@@ -148,7 +155,8 @@
       };
 
       # Nix API reference docs
-      "Noogle Search" = {
+      noogle = {
+	name = "Noogle";
         urls = [
           {
             template = "https://noogle.dev/q";
@@ -165,7 +173,30 @@
         definedAliases = ["${prefix}ns"];
       };
 
-      "Youtube Search" = {
+      # Nix package version search
+      lazamar = {
+	name = "Lazamar";
+	urls = [
+	  {
+	    template = "lazamar.co.uk/nix-versions";
+	    params = [
+	      {
+		name = "package";
+		value = "{searchTerms}";
+	      }
+	      {
+		name = "channel";
+		value = "nixos-${config.home.version.release}";
+	      }
+	    ];
+	  }
+	];
+	icon = snowflake;
+	definedAliases = ["${prefix}lz"];
+      };
+
+      youtube = {
+	name = "Youtube";
         urls = [
           {
             template = "https://www.youtube.com/results";
@@ -183,7 +214,8 @@
       };
 
       # Anime torrents
-      "NyaaSi Search" = {
+      nyaa = {
+	name = "Nyaa";
         urls = [
           {
             template = "https://nyaa.si";
@@ -200,7 +232,8 @@
         definedAliases = ["${prefix}ny"];
       };
 
-      "NyaaSi Subsplease Search" = {
+      nyaa-subsplease = {
+	name = "Nyaa Subsplease";
         urls = [
           {
             template = "https://nyaa.si/user/subsplease";
