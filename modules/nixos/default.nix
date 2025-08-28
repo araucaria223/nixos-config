@@ -6,7 +6,8 @@
   settings,
   ...
 }: {
-  imports = lib.my.validImports ./.;
+  imports = lib.my.validImports ./.
+    ++ [inputs.nix-sweep.nixosModules.default];
 
   # Static options
   networking.hostName = settings.hostname;
@@ -74,10 +75,20 @@
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
 
     # Enable automatic garbage collection of generations older than 7 days
-    gc = {
-      automatic = true;
-      dates = "daily";
-      options = "--delete-older-than 30d";
-    };
+    # gc = {
+    #   automatic = true;
+    #   dates = "daily";
+    #   options = "--delete-older-than 30d";
+    # };
+  };
+
+  # Garbage collection
+  services.nix-sweep = {
+    enable = true;
+    interval = "daily";
+    removeOlder = "30d";
+    keepMin = 20;
+    gc = true;
+    gcInterval = "daily";
   };
 }

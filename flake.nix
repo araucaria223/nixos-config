@@ -57,6 +57,8 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    nix-sweep.url = "github:jzbor/nix-sweep";
+
     # Bar based on astal
     #hyprpanel = {
     #  url = "github:Jas-SinghFSU/HyprPanel";
