@@ -19,20 +19,20 @@
 
       # Set up user profile
       profiles."${config.home.username}" = {
-	settings = {
-	  "browser.startup.homepage" = "about:newtab";
-	};
+        settings = {
+          "browser.startup.homepage" = "about:newtab";
+        };
 
-	bookmarks = {
-	  force = true;
-	  settings = [
-	    {
-	      name = "NixOS Wiki";
-	      tags = ["wiki" "nix"];
-	      url = "https://wiki.nixos.org";
-	    }
-	  ];
-	};
+        bookmarks = {
+          force = true;
+          settings = [
+            {
+              name = "NixOS Wiki";
+              tags = ["wiki" "nix"];
+              url = "https://wiki.nixos.org";
+            }
+          ];
+        };
       };
     };
   };

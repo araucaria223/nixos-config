@@ -38,37 +38,38 @@ in {
     sops = {
       # Provision secrets for all networks
       secrets = let
-	# Helper function to set the sops file of wireless secrets
-	f = n: v: v // {sopsFile = lib.my.paths.secrets + /network/secrets.yaml;};
-      in lib.mkMerge [
-	(forAllNetworks (network: (lib.mapAttrs f {
-	  "network/${network}/ssid" = {};
-	  "network/${network}/pskRaw" = {};
-	})))
+        # Helper function to set the sops file of wireless secrets
+        f = n: v: v // {sopsFile = lib.my.paths.secrets + /network/secrets.yaml;};
+      in
+        lib.mkMerge [
+          (forAllNetworks (network: (lib.mapAttrs f {
+            "network/${network}/ssid" = {};
+            "network/${network}/pskRaw" = {};
+          })))
 
-	# Including eduroam
-	(lib.mapAttrs f {
-          "network/eduroam/identity" = {};
-          "network/eduroam/password" = {};
-          "network/eduroam/altsubject" = {};
-	})
+          # Including eduroam
+          (lib.mapAttrs f {
+            "network/eduroam/identity" = {};
+            "network/eduroam/password" = {};
+            "network/eduroam/altsubject" = {};
+          })
 
-	{
-	  "network/eduroam/ca_cert" = {
-	      format = "binary";
-	      sopsFile = lib.my.paths.secrets + /network/ca.pem;
-	  };
-	}
-      ];
+          {
+            "network/eduroam/ca_cert" = {
+              format = "binary";
+              sopsFile = lib.my.paths.secrets + /network/ca.pem;
+            };
+          }
+        ];
 
       # Specify content of configuration file
       templates."wpa_supplicant.conf".content =
-	(networks
-	|> builtins.map(network: createWPAConfig network)
-	|> lib.concatStringsSep "\n")
-	# Extra configuration for eduroam
-	+ "\n"
-	+ ''
+        (networks
+          |> builtins.map (network: createWPAConfig network)
+          |> lib.concatStringsSep "\n")
+        # Extra configuration for eduroam
+        + "\n"
+        + ''
           network={
             ssid="eduroam"
             key_mgmt=WPA-EAP
@@ -81,7 +82,7 @@ in {
             phase2="auth=MSCHAPV2"
             password="${config.sops.placeholder."network/eduroam/password"}"
           }
-	'';
+        '';
     };
 
     # Symlink /etc/wpa_supplicant.conf to generated configuration file

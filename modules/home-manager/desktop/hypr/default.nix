@@ -67,7 +67,7 @@
           workspace_swipe_cancel_ratio = 0.2;
         };
 
-	ecosystem.no_update_news = true;
+        ecosystem.no_update_news = true;
 
         misc = {
           disable_hyprland_logo = true;

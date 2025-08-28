@@ -122,7 +122,7 @@ in {
         vim-surround.enable = true;
 
         # Markdown
-	#markview.enable = true;
+        #markview.enable = true;
         # LaTeX
         vimtex.enable = true;
         # Lean

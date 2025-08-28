@@ -113,11 +113,11 @@
           "$mod, P, togglespecialworkspace, password"
           "$mod SHIFT, V, togglespecialworkspace, vpn"
 
-	  "$mod SHIFT, M, togglespecialworkspace, minimise"
-	  "$mod SHIFT, M, movetoworkspace, +0"
-	  "$mod SHIFT, M, togglespecialworkspace, minimise"
-	  "$mod SHIFT, M, movetoworkspace, special:minimise"
-	  "$mod SHIFT, M, togglespecialworkspace, minimise"
+          "$mod SHIFT, M, togglespecialworkspace, minimise"
+          "$mod SHIFT, M, movetoworkspace, +0"
+          "$mod SHIFT, M, togglespecialworkspace, minimise"
+          "$mod SHIFT, M, movetoworkspace, special:minimise"
+          "$mod SHIFT, M, togglespecialworkspace, minimise"
 
           # Scroll workspaces
           "$mod, mouse_down, workspace, e+1"

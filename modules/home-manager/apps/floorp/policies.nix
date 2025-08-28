@@ -42,8 +42,8 @@
 
     Preferences = let
       lock = value: {
-	Value = value;
-	Status = "locked";
+        Value = value;
+        Status = "locked";
       };
     in {
       "browser.contentblocking.category" = lock "strict";

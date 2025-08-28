@@ -17,7 +17,7 @@
       settings = {
         main = {
           terminal = lib.getExe pkgs.${settings.defaultTerminal};
-	  #icon-theme = "${config.stylix.iconTheme.dark}";
+          #icon-theme = "${config.stylix.iconTheme.dark}";
           prompt = "​";
           password-character = "*";
           match-mode = "fuzzy";

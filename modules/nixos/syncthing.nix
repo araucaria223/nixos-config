@@ -13,13 +13,13 @@ in {
   config = lib.mkIf config.syncthing.enable {
     sops.secrets = {
       "syncthing/cert.pem" = {
-	format = "binary";
-	sopsFile = lib.my.paths.secrets + /syncthing/cert.pem;
+        format = "binary";
+        sopsFile = lib.my.paths.secrets + /syncthing/cert.pem;
       };
 
       "syncthing/key.pem" = {
-	format = "binary";
-	sopsFile = lib.my.paths.secrets + /syncthing/key.pem;
+        format = "binary";
+        sopsFile = lib.my.paths.secrets + /syncthing/key.pem;
       };
 
       # "syncthing/password" = {
@@ -35,18 +35,18 @@ in {
       configDir = "/persist/home/${username}/.config/syncthing";
 
       settings = {
-	cert = config.sops.secrets."syncthing/cert.pem".path;
-	key = config.sops.secrets."syncthing/key.pem".path;
+        cert = config.sops.secrets."syncthing/cert.pem".path;
+        key = config.sops.secrets."syncthing/key.pem".path;
 
-	options.urAccepted = -1;
+        options.urAccepted = -1;
 
         gui = {
           user = username;
-	  password = "password";
+          password = "password";
         };
 
         # Awaiting merge of https://github.com/NixOS/nixpkgs/pull/290485
-	# guiPasswordFile = config.sops.secrets."syncthing/password".path;
+        # guiPasswordFile = config.sops.secrets."syncthing/password".path;
 
         devices.phone = {
           id = "7JTFZJC-NJGSLWY-RIW7P2I-GXU5BY3-MVEAIK3-U6NQVY2-LD5DMX3-WAB5SAF";

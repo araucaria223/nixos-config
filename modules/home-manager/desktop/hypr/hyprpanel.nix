@@ -30,15 +30,15 @@
       #overwrite.enable = true;
 
       settings = {
-	layout = {
-	  "bar.layouts"."0" = {
-	    left = ["dashboard" "workspaces" "submap"];
-	    middle = ["media"];
-	    right = ["volume" "bluetooth" "battery" "systray" "clock" "notifications"];
-	  };
-	};
+        layout = {
+          "bar.layouts"."0" = {
+            left = ["dashboard" "workspaces" "submap"];
+            middle = ["media"];
+            right = ["volume" "bluetooth" "battery" "systray" "clock" "notifications"];
+          };
+        };
 
-	theme.bar.transparent = true;
+        theme.bar.transparent = true;
 
         bar = {
           workspaces.ignored = ''^-\\d+$'';

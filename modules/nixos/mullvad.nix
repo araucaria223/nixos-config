@@ -40,15 +40,15 @@
     networking.nftables = {
       enable = true;
       tables = {
-	excludeTraffic = {
-	  content = ''
-	    chain excludeOutgoing {
-	      type route hook output priority 0; policy accept;
-	      ip daddr 89.58.44.75 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
-	    }
-	  '';
-	  family = "inet";
-	};
+        excludeTraffic = {
+          content = ''
+            chain excludeOutgoing {
+              type route hook output priority 0; policy accept;
+              ip daddr 89.58.44.75 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
+            }
+          '';
+          family = "inet";
+        };
       };
     };
   };
