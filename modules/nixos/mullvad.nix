@@ -32,8 +32,24 @@
       ''
         while ! ${mullvad} status >/dev/null; do sleep 1; done
         ${mullvad} connect
-        ${mullvad} dns set default --block-ads --block-trackers --block-malware --block-adult-content
+        ${mullvad} dns set default --block-ads --block-trackers --block-malware
         ${mullvad} tunnel set wireguard --daita on
       '';
+
+    # Allow geoclue to connect to endpoint without VPN
+    networking.nftables = {
+      enable = true;
+      tables = {
+	excludeTraffic = {
+	  content = ''
+	    chain excludeOutgoing {
+	      type route hook output priority 0; policy accept;
+	      ip daddr 89.58.44.75 ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
+	    }
+	  '';
+	  family = "inet";
+	};
+      };
+    };
   };
 }
