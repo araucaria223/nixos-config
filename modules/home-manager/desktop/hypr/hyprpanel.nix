@@ -1,12 +1,9 @@
 {
   config,
   lib,
-  inputs,
   pkgs,
   ...
 }: {
-  #imports = [inputs.hyprpanel.homeManagerModules.hyprpanel];
-
   options.hyprpanel.enable = lib.mkEnableOption ''
     hyprpanel - a bar based on astal
   '';
