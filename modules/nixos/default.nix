@@ -12,7 +12,6 @@
   # Static options
   networking.hostName = settings.hostname;
   i18n.defaultLocale = "en_GB.UTF-8";
-  services.openssh.enable = true;
 
   # Firmware updates
   services.fwupd.enable = true;
