@@ -31,5 +31,7 @@
         shell = lib.mkIf config.programs.zsh.enable pkgs.zsh;
       };
     };
+
+    services.userborn.enable = true;
   };
 }
