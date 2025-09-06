@@ -22,8 +22,6 @@
   security.pam.services.hyprlock.fprintAuth = lib.mkDefault true;
   # Global styling
   stylix.enable = lib.mkDefault true;
-  # Disable useradd and groupadd commands
-  users.mutableUsers = lib.mkDefault false;
 
   # Set machine ID
   sops.secrets."machine-id/${config.networking.hostName}" = {

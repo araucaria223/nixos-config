@@ -67,5 +67,14 @@
     ];
 
     programs.fuse.userAllowOther = true;
+
+    # Disable useradd and groupadd commands
+    users.mutableUsers = lib.mkDefault false;
+
+    system.etc.overlay = {
+      enable = true;
+      # To do: resolve issue with automatic-timezoned when set to true
+      mutable = true;
+    };
   };
 }
