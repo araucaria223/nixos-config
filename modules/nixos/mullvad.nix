@@ -226,17 +226,40 @@ in {
 
     systemd = {
       services."mullvad-daemon".environment.MULLVAD_SETTINGS_DIR = "/var/lib/mullvad-vpn";
-      tmpfiles.settings."10-mullvad-device"."/var/lib/mullvad-vpn/device.json"."C+" = {
-        group = "root";
-        mode = "0700";
-        user = "root";
-        argument = config.sops.secrets.mullvad-device.path;
+      tmpfiles.settings = {
+        "10-mullvad-device"."/var/lib/mullvad-vpn/device.json"."C+" = {
+          group = "root";
+          mode = "0700";
+          user = "root";
+          argument = config.sops.secrets.mullvad-device.path;
+        };
+        "10-mullvad-settings"."/var/lib/mullvad-vpn/settings.json"."C+" = {
+          group = "root";
+          mode = "0700";
+          user = "root";
+          argument = "${mullvadConfig}";
+        };
       };
-      tmpfiles.settings."10-mullvad-settings"."/var/lib/mullvad-vpn/settings.json"."C+" = {
-        group = "root";
-        mode = "0700";
-        user = "root";
-        argument = "${mullvadConfig}";
+    };
+
+    # See https://mullvad.net/en/help/split-tunneling-with-linux-advanced
+    networking.nftables = {
+      enable = true;
+      tables = {
+        excludeTraffic = let
+          excludedIPs = builtins.concatStringsSep ", " [
+            "89.58.44.75"
+            "185.93.1.249"
+          ];
+        in {
+          content = ''
+            chain excludeOutgoing {
+              type route hook output priority 0; policy accept;
+              ip daddr {${excludedIPs}} ct mark set 0x00000f41 meta mark set 0x6d6f6c65;
+            }
+          '';
+	  family = "inet";
+        };
       };
     };
   };
