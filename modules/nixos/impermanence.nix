@@ -73,7 +73,7 @@
 
     system.etc.overlay = {
       enable = true;
-      # To do: resolve issue with automatic-timezoned when set to true
+      # To do: resolve issue with automatic-timezoned when set to false
       mutable = true;
     };
   };
