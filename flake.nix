@@ -46,24 +46,8 @@
       };
     };
 
-    # Wayland compositor
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-    };
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      # Pin plugin versions to hyprland verion
-      inputs.hyprland.follows = "hyprland";
-    };
-
+    # Better garbage collection
     nix-sweep.url = "github:jzbor/nix-sweep";
-
-    # Bar based on astal
-    #hyprpanel = {
-    #  url = "github:Jas-SinghFSU/HyprPanel";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
 
     # HM module to configure neovim
     nixvim = {
@@ -98,6 +82,12 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };
+    };
+
+    # URL blocklist
+    oisd = {
+      flake = false;
+      url = "https://big.oisd.nl/domainswild";
     };
   };
 
