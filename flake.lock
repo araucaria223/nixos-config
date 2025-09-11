@@ -748,7 +748,7 @@
     "oisd": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-8p8/mdMszH96TWgzPNWmQ8kB97p7huKEZptfHsDbj+0=",
+        "narHash": "sha256-GfDzZhb+Ah1cMBlgKL71TjUpFZArAyYhi6oL6f5W44g=",
         "type": "file",
         "url": "https://big.oisd.nl/domainswild"
       },
