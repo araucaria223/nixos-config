@@ -161,11 +161,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757469899,
-        "narHash": "sha256-nhG8DwwDnLuAZTwUqq2s8hsctHfJUrWEDbVR4He+qIo=",
+        "lastModified": 1757556412,
+        "narHash": "sha256-LRZ02sScX2lDqxz2sKyXih2QBCt3NTM+e7zhX8/IZ48=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "90b18ef0713dbf434789c04a407c83670a207c83",
+        "rev": "9372cba0f4cafea7af3e8422ed9baba8710a8b96",
         "type": "github"
       },
       "original": {
@@ -510,11 +510,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757469080,
-        "narHash": "sha256-nBBLIfu1ugSFRLtOpOt7OkQTrUMOjH0hzCcfDAQF3Yc=",
+        "lastModified": 1757555750,
+        "narHash": "sha256-32Tgm1H4NKhFKfGtW2Iy8X7P9TjKJ4JGGd9b+mCycE0=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "34d1884d25d6eb93cf1c3434e04407f2b88c9dea",
+        "rev": "5eaf56d3a39239b3690fd057bda981bb202a6e04",
         "type": "github"
       },
       "original": {
@@ -532,11 +532,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757492326,
-        "narHash": "sha256-+fsabChnPFSm6LNsE53SqrBuykBTvuN45YWvRyZ8tjM=",
+        "lastModified": 1757553591,
+        "narHash": "sha256-NRfAfXZCD2dpeOKNBJuy100erTKlrdDq4OAXwRDrJ6s=",
         "owner": "kaylorben",
         "repo": "nixcord",
-        "rev": "5554d927b44444fff8c58584408cd8b2f892f22f",
+        "rev": "5831a741ffdf7da17c293cbb4652e3e504e92b61",
         "type": "github"
       },
       "original": {
@@ -610,11 +610,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1757347588,
-        "narHash": "sha256-tLdkkC6XnsY9EOZW9TlpesTclELy8W7lL2ClL+nma8o=",
+        "lastModified": 1757487488,
+        "narHash": "sha256-zwE/e7CuPJUWKdvvTCB7iunV4E/+G0lKfv4kk/5Izdg=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b599843bad24621dcaa5ab60dac98f9b0eb1cabe",
+        "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
         "type": "github"
       },
       "original": {
@@ -748,7 +748,7 @@
     "oisd": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-4flTfsbcSQ53fnZwSacYTerHWCn3GVR4bSuS8Cmq3aA=",
+        "narHash": "sha256-8p8/mdMszH96TWgzPNWmQ8kB97p7huKEZptfHsDbj+0=",
         "type": "file",
         "url": "https://big.oisd.nl/domainswild"
       },
@@ -1100,11 +1100,11 @@
         "systems": "systems_6"
       },
       "locked": {
-        "lastModified": 1757493677,
-        "narHash": "sha256-qpDr85IW86J1pJpW7CU2UhaeRNhHBiHNFhIgiwULNAY=",
+        "lastModified": 1757580025,
+        "narHash": "sha256-i8RwL02ls+oF5K6LuRNrE2wKYLe9jGgtGVbwdAGMP/Y=",
         "owner": "marienz",
         "repo": "nix-doom-emacs-unstraightened",
-        "rev": "0cdd4b54d2b02e3e04b47e748e9d2b44eb4768f7",
+        "rev": "afd150f3ab53521c622d6c880fc9a76dd8c8a319",
         "type": "github"
       },
       "original": {
