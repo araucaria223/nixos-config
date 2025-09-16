@@ -10,8 +10,10 @@
   config.services = lib.mkIf config.geoclue.enable {
     geoclue2 = {
       enable = true;
-      geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
+      geoProviderUrl = "api.beacondb.net/v1/geolocate";
     };
+
+    avahi.enable = true;
 
     automatic-timezoned.enable = true;
   };
