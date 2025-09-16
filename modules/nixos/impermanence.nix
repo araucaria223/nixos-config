@@ -72,7 +72,7 @@
     users.mutableUsers = lib.mkDefault false;
 
     system.etc.overlay = {
-      enable = true;
+      enable = false;
       # To do: resolve issue with automatic-timezoned when set to false
       mutable = true;
     };
