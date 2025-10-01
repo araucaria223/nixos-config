@@ -83,12 +83,6 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-
-    # URL blocklist
-    oisd = {
-      flake = false;
-      url = "https://big.oisd.nl/domainswild";
-    };
   };
 
   outputs = {
