@@ -9,7 +9,9 @@
     networking.nftables.enable = true;
 
     services = {
-      openssh.enable = true;
+      openssh = {
+	enable = true;
+      };
       # Ban hosts that cause multiple authentication errors
       fail2ban.enable = true;
       # Slow down malicious SSH connection attempts by delaying connections
