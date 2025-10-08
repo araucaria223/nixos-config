@@ -53,7 +53,6 @@
         "/var/log"
         "/var/lib/bluetooth"
         "/var/lib/nixos"
-        "/etc/ssh"
         "/var/lib/systemd/coredump"
       ];
     };
@@ -72,7 +71,7 @@
     users.mutableUsers = lib.mkDefault false;
 
     system.etc.overlay = {
-      enable = false;
+      enable = true;
       # To do: resolve issue with automatic-timezoned when set to false
       mutable = true;
     };
