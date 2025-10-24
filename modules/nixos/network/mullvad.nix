@@ -147,13 +147,13 @@
         ];
         relay_settings = {
           normal = {
-            location.only.custom_list.list_id = europeID;
+            location.only.custom_list.list_id = allCountriesID;
             openvpn_constraints.port = "any";
             ownership = "any";
             providers = "any";
             tunnel_protocol = "any";
             wireguard_constraints = {
-              entry_location.only.custom_list.list_id = "00000000-0000-0000-0000-000000000000"; # This will be ignored if DAITA is enabled, or if `use_multihop` is set to false.
+              entry_location.only.custom_list.list_id = allCountriesID; # This will be ignored if DAITA is enabled, or if `use_multihop` is set to false.
               ip_version = "any";
               port = "any";
               use_multihop = true;
