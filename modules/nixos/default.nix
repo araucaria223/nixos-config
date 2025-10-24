@@ -46,6 +46,8 @@
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
     settings = {
+      trusted-users = ["@wheel"];
+
       experimental-features = [
         # Enable flakes
         "nix-command"
