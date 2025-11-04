@@ -11,6 +11,7 @@
     "hotspot"
     "uni"
     "manialand"
+    "ratmanor"
   ];
 
   forAllNetworks = f: lib.mkMerge (builtins.map f networks);
