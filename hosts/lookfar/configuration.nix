@@ -11,5 +11,9 @@
   systemd-boot.enable = false;
   lanzaboote.enable = true;
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "qtwebengine-5.15.19"
+  ];
+
   system.stateVersion = "24.11";
 }

@@ -14,11 +14,13 @@
     # GUI file manager
     pcmanfm
     # Browser for the Tor network
-    tor-browser-bundle-bin
+    tor-browser
     # GNOME graphical unarchiver
     file-roller
     # GNOME graphical disk utility
     gnome-disk-utility
+    # PDF presenter
+    pympress
   ];
 
   programs.neovide = lib.mkDefault {

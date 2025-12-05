@@ -19,7 +19,7 @@
       enable = true;
       package = pkgs.vscodium;
       profiles.default = {
-        extensions = with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
+        extensions = with inputs.nix-vscode-extensions.extensions.${pkgs.stdenv.hostPlatform.system}.vscode-marketplace; [
           vscodevim.vim
           yzhang.markdown-all-in-one
           mvllow.rose-pine
@@ -35,7 +35,7 @@
           editor.formatOnSave = true;
           nix = {
             serverPath = lib.getExe pkgs.nixd;
-            formatterPath = lib.getExe outputs.formatter.${pkgs.system};
+            formatterPath = lib.getExe outputs.formatter.${pkgs.stdenv.hostPlatform.system};
           };
         };
       };

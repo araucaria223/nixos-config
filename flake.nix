@@ -3,12 +3,12 @@
 
   inputs = {
     # CURRENT STABLE VERSION - NIXOS 25.05
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # User environment management
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -40,7 +40,7 @@
 
     # Theming
     stylix = {
-      url = "github:danth/stylix/release-25.05";
+      url = "github:danth/stylix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };
@@ -51,7 +51,7 @@
 
     # HM module to configure neovim
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-25.05";
+      url = "github:nix-community/nixvim";
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };

@@ -9,7 +9,7 @@
   cfg = config.neovim;
 in {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
   ];
 
   options.neovim = {

@@ -216,7 +216,7 @@ in {
     };
 
     # Autostart the GUI application.
-    #environment.systemPackages = [mullvad-autostart];
+    environment.systemPackages = [mullvad-autostart];
 
     sops.secrets.mullvad-device = {
       format = "json";

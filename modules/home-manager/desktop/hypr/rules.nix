@@ -36,8 +36,6 @@ in {
 
     exec-once = [
       "[workspace special:system silent] ${bottom}"
-      "[workspace special:password silent] ${keepass}"
-      "[workspace special:vpn silent] ${mullvad}"
     ];
   };
 }

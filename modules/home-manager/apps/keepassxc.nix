@@ -9,10 +9,18 @@
   '';
 
   config = lib.mkIf config.keepassxc.enable {
+    # Persist the password database
     home.persistence."/persist/home/${config.home.username}".directories = [
-      "${config.configDir}/keepassxc"
       "${config.dataDir}/passwords"
     ];
-    home.packages = [pkgs.keepassxc];
+
+    xdg.autostart.enable = lib.mkDefault true;
+    programs.keepassxc = {
+      autostart = true;
+      enable = true;
+      settings = {
+	FdoSecrets.Enabled = true;
+      };
+    };
   };
 }
